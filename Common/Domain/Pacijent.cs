@@ -15,13 +15,13 @@ namespace Common.Domain
         public Pol Pol { get; set; }
         public string Email { get; set; }
         public string BrojTelefona { get; set; }
-        public KategorijaPacijenta KategorijaPacijenta { get; set; };
+        public KategorijaPacijenta KategorijaPacijenta { get; set; }
 
         public string TableName => "Pacijent";
 
         public string InsertColumns => "ime, prezime, datRodjenja, pol, email, brTelefona, idKategorijaPacijenta";
 
-        public string InsertValues => $"'{Ime}', '{Prezime}', '{DatumRodjenja}', '{Pol}', '{Email}', '{BrojTelefona}', '{KategorijaPacijenta.I}'";
+        public string InsertValues => $"'{Ime}', '{Prezime}', '{DatumRodjenja}', '{Pol}', '{Email}', '{BrojTelefona}', '{KategorijaPacijenta.Id}'";
 
         public string SelectColumns => throw new NotImplementedException();
 
