@@ -15,7 +15,10 @@ namespace Client
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Koordinator.Instance.OtvoriLoginFormu();
-            //Application.Run(new FrmLogin());
+            if (Koordinator.Instance.UlogovanZaposleni != null)
+            {
+                Application.Run(Koordinator.Instance.FrmGlavna);
+            }
         }
     }
 }

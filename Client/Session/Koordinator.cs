@@ -28,17 +28,18 @@ namespace Client.Session
         public Zaposleni? UlogovanZaposleni { get; internal set; }
 
         public LoginGuiController LoginGuiController { get; set; }
-        public FrmLogin frmLogin { get; set; }
+        public FrmLogin FrmLogin { get; set; }
+        public FrmGlavna FrmGlavna { get; set; }
 
         internal void OtvoriGlavnuFormu()
         {
-            throw new NotImplementedException();
+            FrmGlavna = new FrmGlavna();
         }
 
         internal void OtvoriLoginFormu()
         {
-            frmLogin = new FrmLogin();
-            LoginGuiController = new LoginGuiController(frmLogin);
+            FrmLogin = new FrmLogin();
+            LoginGuiController = new LoginGuiController(FrmLogin);
             LoginGuiController.OtvoriFormu();
         }
     }
