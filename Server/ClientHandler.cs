@@ -1,4 +1,5 @@
 ﻿using Common.Communication;
+using Common.Domain;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -57,7 +58,9 @@ namespace Server
             {
                 switch (request.Operation)
                 {
-
+                    case Operation.PrijaviZaposleni:
+                        response.Data = Controller.Instance.PrijaviZaposleni(serializer.ReadType<Zaposleni>(request.Argument));
+                        break;
                 }
             }
             catch (Exception e)

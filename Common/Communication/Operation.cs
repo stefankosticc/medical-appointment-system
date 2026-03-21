@@ -6,5 +6,6 @@ namespace Common.Communication
 {
     public enum Operation
     {
+        PrijaviZaposleni
     }
 }
