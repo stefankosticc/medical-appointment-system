@@ -1,6 +1,7 @@
 ﻿using Common.Domain;
 using Server.SystemOperations.KategorijaPacijentaSO;
 using Server.SystemOperations.PacijentSO;
+using Server.SystemOperations.UslugaSO;
 using Server.SystemOperations.ZaposleniSO;
 
 namespace Server
@@ -54,6 +55,27 @@ namespace Server
         internal Pacijent PromeniPacijent(Pacijent pacijent)
         {
             PromeniPacijentSO so = new PromeniPacijentSO(pacijent);
+            so.OpsteIzvrsenjeSO();
+            return so.Result;
+        }
+
+        internal List<Usluga> VratiListuSviUsluga(Usluga usluga)
+        {
+            VratiListuSviUslugaSO so = new VratiListuSviUslugaSO(usluga);
+            so.OpsteIzvrsenjeSO();
+            return so.ResultList;
+        }
+
+        internal Usluga UbaciUsluga(Usluga usluga)
+        {
+            UbaciUslugaSO so = new UbaciUslugaSO(usluga);
+            so.OpsteIzvrsenjeSO();
+            return so.Result;
+        }
+
+        internal Usluga PromeniUsluga(Usluga usluga)
+        {
+            PromeniUslugaSO so = new PromeniUslugaSO(usluga);
             so.OpsteIzvrsenjeSO();
             return so.Result;
         }

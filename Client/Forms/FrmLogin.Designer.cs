@@ -124,13 +124,13 @@ namespace Client.Forms
             // lblEmail
             // 
             lblEmail.AutoSize = true;
-            lblEmail.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            lblEmail.ForeColor = Color.FromArgb(80, 80, 80);
+            lblEmail.Font = new Font("Segoe UI", 9F);
+            lblEmail.ForeColor = Color.FromArgb(120, 120, 120);
             lblEmail.Location = new Point(48, 158);
             lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(112, 17);
+            lblEmail.Size = new Size(85, 15);
             lblEmail.TabIndex = 1;
-            lblEmail.Text = "KORISNIČKO IME";
+            lblEmail.Text = "Korisničko ime";
             // 
             // textBoxEmail
             // 
@@ -145,13 +145,13 @@ namespace Client.Forms
             // lblLozinka
             // 
             lblLozinka.AutoSize = true;
-            lblLozinka.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            lblLozinka.ForeColor = Color.FromArgb(80, 80, 80);
+            lblLozinka.Font = new Font("Segoe UI", 9F);
+            lblLozinka.ForeColor = Color.FromArgb(120, 120, 120);
             lblLozinka.Location = new Point(48, 224);
             lblLozinka.Name = "lblLozinka";
-            lblLozinka.Size = new Size(64, 17);
+            lblLozinka.Size = new Size(47, 15);
             lblLozinka.TabIndex = 3;
-            lblLozinka.Text = "LOZINKA";
+            lblLozinka.Text = "Lozinka";
             // 
             // textBoxLozinka
             // 
@@ -170,13 +170,13 @@ namespace Client.Forms
             btnLogin.Cursor = Cursors.Hand;
             btnLogin.FlatAppearance.BorderSize = 0;
             btnLogin.FlatStyle = FlatStyle.Flat;
-            btnLogin.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnLogin.Font = new Font("Segoe UI", 10.5F, FontStyle.Bold);
             btnLogin.ForeColor = Color.FromArgb(255, 255, 251);
             btnLogin.Location = new Point(48, 308);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(315, 38);
             btnLogin.TabIndex = 5;
-            btnLogin.Text = "PRIJAVI SE";
+            btnLogin.Text = "Prijavi se";
             btnLogin.UseVisualStyleBackColor = false;
             btnLogin.Click += btnLogin_Click;
             // 

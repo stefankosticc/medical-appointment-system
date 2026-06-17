@@ -73,6 +73,15 @@ namespace Server
                     case Operation.PromeniPacijent:
                         response.Data = Controller.Instance.PromeniPacijent(serializer.ReadType<Pacijent>(request.Argument));
                         break;
+                    case Operation.VratiListuSviUsluga:
+                        response.Data = Controller.Instance.VratiListuSviUsluga(serializer.ReadType<Usluga>(request.Argument));
+                        break;
+                    case Operation.UbaciUsluga:
+                        response.Data = Controller.Instance.UbaciUsluga(serializer.ReadType<Usluga>(request.Argument));
+                        break;
+                    case Operation.PromeniUsluga:
+                        response.Data = Controller.Instance.PromeniUsluga(serializer.ReadType<Usluga>(request.Argument));
+                        break;
                 }
             }
             catch (Exception e)

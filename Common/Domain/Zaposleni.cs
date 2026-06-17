@@ -28,7 +28,6 @@ namespace Common.Domain
         public string PrimaryKeyClause => "";
 
         public string WhereClause { get => $"korisnickoIme='{KorisnickoIme}' AND sifra='{Sifra}'"; set { } }
-
         public List<IDomainObject> All(SqlDataReader reader)
         {
             List<IDomainObject> zaposleni = new List<IDomainObject>();
@@ -48,6 +47,11 @@ namespace Common.Domain
             }
 
             return zaposleni;
+        }
+
+        public override string? ToString()
+        {
+            return Ime + " " + Prezime;
         }
     }
 }

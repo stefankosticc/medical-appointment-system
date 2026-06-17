@@ -102,5 +102,44 @@ namespace Client
             response.Data = serializer.ReadType<Pacijent>(response.Data);
             return response;
         }
+
+        public Response VratiListuSviUsluga(Usluga usluga)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.VratiListuSviUsluga,
+                Argument = usluga
+            };
+            serializer.Send(request);
+            Response response = serializer.Receive<Response>();
+            response.Data = serializer.ReadType<List<Usluga>>(response.Data);
+            return response;
+        }
+
+        public Response UbaciUsluga(Usluga usluga)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.UbaciUsluga,
+                Argument = usluga
+            };
+            serializer.Send(request);
+            Response response = serializer.Receive<Response>();
+            response.Data = serializer.ReadType<Usluga>(response.Data);
+            return response;
+        }
+
+        public Response PromeniUsluga(Usluga usluga)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.PromeniUsluga,
+                Argument = usluga
+            };
+            serializer.Send(request);
+            Response response = serializer.Receive<Response>();
+            response.Data = serializer.ReadType<Usluga>(response.Data);
+            return response;
+        }
     }
 }

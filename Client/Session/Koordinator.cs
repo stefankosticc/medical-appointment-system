@@ -1,4 +1,4 @@
-﻿using Client.Forms;
+using Client.Forms;
 using Client.GuiController;
 using Client.UserControls;
 using Common.Communication;
@@ -28,17 +28,22 @@ namespace Client.Session
         // Liste
         public List<KategorijaPacijenta> ListaKategorijaPacijenta { get; set; }
         public List<Pacijent> ListaPacijenata { get; set; }
+        public List<Usluga> ListaUsluga { get; set; }
 
         // Selektovani objekti
         public Pacijent IzabraniPacijent { get; set; }
+        public Usluga IzabranaUsluga { get; set; }
 
-        // Forme i controlleri
+        // Forme
         public FrmLogin FrmLogin { get; set; }
         public FrmGlavna FrmGlavna { get; set; }
         public FrmPacijent FrmPacijent { get; set; }
+        public FrmUsluga FrmUsluga { get; set; }
 
+        // Kontroleri
         public LoginGuiController LoginGuiController { get; set; }
         public KreirajPacijentGuiController KreirajPacijentGuiController { get; set; }
+        public UbaciUslugaGuiController UbaciUslugaGuiController { get; set; }
 
         internal void OtvoriLoginFormu()
         {
@@ -65,6 +70,18 @@ namespace Client.Session
             panelContent.Controls.Add(uc);
         }
 
+        internal void OtvoriUslugaPanel(Panel panelContent)
+        {
+            Response response = Communication.Instance.VratiListuSviUsluga(new Usluga());
+            if (response.ExceptionMessage == null)
+                ListaUsluga = response.Data as List<Usluga>;
+
+            UslugaUC uc = new UslugaUC();
+            uc.Dock = DockStyle.Fill;
+            panelContent.Controls.Clear();
+            panelContent.Controls.Add(uc);
+        }
+
         internal void OtvoriKreirajPacijentFormu()
         {
             FrmPacijent = new FrmPacijent(ModeForme.Kreiraj);
@@ -75,6 +92,18 @@ namespace Client.Session
         {
             FrmPacijent = new FrmPacijent(ModeForme.Promeni);
             // PromeniPacijentGuiController = new PromeniPacijentGuiController(FrmPacijent);
+        }
+
+        internal void OtvoriUbaciUslugaFormu()
+        {
+            FrmUsluga = new FrmUsluga(ModeForme.Kreiraj);
+            UbaciUslugaGuiController = new UbaciUslugaGuiController(FrmUsluga);
+        }
+
+        internal void OtvoriPromeniUslugaFormu()
+        {
+            FrmUsluga = new FrmUsluga(ModeForme.Promeni);
+            UbaciUslugaGuiController = new UbaciUslugaGuiController(FrmUsluga);
         }
     }
 }

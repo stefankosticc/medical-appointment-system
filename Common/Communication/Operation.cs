@@ -10,6 +10,17 @@ namespace Common.Communication
         VratiListuSviZaposleni,
         VratiListuSviKategorijaPacijenta,
         KreirajPacijent,
-        PromeniPacijent
+        PromeniPacijent,
+        KreirajZakazivanje,
+        PromeniZakazivanje,
+        VratiListuSviPacijent,
+        VratiListuSviUsluga,
+        PretraziZakazivanje,
+        VratiListuZakazivanje,
+        PretraziPacijent,
+        VratiListuPacijent,
+        ObrisiPacijent,
+        UbaciUsluga,
+        PromeniUsluga
     }
 }

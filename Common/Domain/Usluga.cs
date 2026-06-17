@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Common.Domain
 {
-    internal class Usluga : IDomainObject
+    public class Usluga : IDomainObject
     {
         public long Id { get; set; }
         public string Naziv {  get; set; }
@@ -17,19 +17,33 @@ namespace Common.Domain
 
         public string InsertValues => $"'{Naziv}', '{Cena}'";
 
-        public string SelectColumns => throw new NotImplementedException();
+        public string SelectColumns => "*";
 
-        public string JoinClause => throw new NotImplementedException();
+        public string JoinClause => "";
 
-        public string SetClause => throw new NotImplementedException();
+        public string SetClause => $"naziv='{Naziv}', cena={Cena}";
 
-        public string PrimaryKeyClause => throw new NotImplementedException();
+        public string PrimaryKeyClause => $"id = {Id}";
 
-        public string WhereClause { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string WhereClause { get; set; }
 
         public List<IDomainObject> All(SqlDataReader reader)
         {
-            throw new NotImplementedException();
+            List<IDomainObject> usluge = new List<IDomainObject>();
+
+            while (reader.Read())
+            {
+                Usluga usluga = new Usluga
+                {
+                    Id = (long)reader["id"],
+                    Naziv = reader["naziv"].ToString().Trim(),
+                    Cena = (decimal)reader["cena"]
+                };
+
+                usluge.Add(usluga);
+            }
+
+            return usluge;
         }
     }
 }
