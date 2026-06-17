@@ -80,6 +80,7 @@
             btnPacijenti.TabIndex = 5;
             btnPacijenti.Text = "Pacijenti";
             btnPacijenti.UseVisualStyleBackColor = true;
+            btnPacijenti.Click += new EventHandler(btnPacijenti_Click);
             // 
             // btnZakazivanja
             // 

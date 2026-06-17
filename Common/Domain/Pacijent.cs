@@ -21,17 +21,17 @@ namespace Common.Domain
 
         public string InsertColumns => "ime, prezime, datRodjenja, pol, email, brTelefona, idKategorijaPacijenta";
 
-        public string InsertValues => $"'{Ime}', '{Prezime}', '{DatumRodjenja}', '{Pol}', '{Email}', '{BrojTelefona}', '{KategorijaPacijenta.Id}'";
+        public string InsertValues => $"'{Ime}', '{Prezime}', '{DatumRodjenja}', {(int)Pol}, '{Email}', '{BrojTelefona}', '{KategorijaPacijenta.Id}'";
 
-        public string SelectColumns => throw new NotImplementedException();
+        public string SelectColumns => "p.id, p.ime, p.prezime, p.datRodjenja, p.pol, p.email, p.brTelefona, k.id as idKategorijaPacijenta, k.naziv, k.popust";
 
-        public string JoinClause => throw new NotImplementedException();
+        public string JoinClause => "p JOIN KategorijaPacijenta k ON p.idKategorijaPacijenta = k.id";
 
-        public string SetClause => throw new NotImplementedException();
+        public string SetClause => $"ime='{Ime}', prezime='{Prezime}', datRodjenja='{DatumRodjenja}', pol={(int)Pol}, email='{Email}', brTelefona='{BrojTelefona}', idKategorijaPacijenta={KategorijaPacijenta.Id}";
 
         public string PrimaryKeyClause => $"id = {Id}";
 
-        public string WhereClause { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string WhereClause { get; set; }
 
         public List<IDomainObject> All(SqlDataReader reader)
         {
@@ -45,12 +45,12 @@ namespace Common.Domain
                     Ime = reader["ime"].ToString().Trim(),
                     Prezime = reader["prezime"].ToString().Trim(),
                     DatumRodjenja = (DateOnly)reader["datRodjenja"],
-                    Pol = (Pol)reader["pol"],
+                    Pol = (Pol)(int)reader["pol"],
                     Email = reader["email"].ToString().Trim(),
                     BrojTelefona = reader["brTelefona"].ToString().Trim(),
                     KategorijaPacijenta = new KategorijaPacijenta
                     {
-                        Id = (long)reader["id"],
+                        Id = (long)reader["idKategorijaPacijenta"],
                         Naziv = reader["naziv"].ToString().Trim(),
                         Popust = (decimal)reader["popust"]
                     }

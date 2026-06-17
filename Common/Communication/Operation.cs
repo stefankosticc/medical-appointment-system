@@ -6,6 +6,10 @@ namespace Common.Communication
 {
     public enum Operation
     {
-        PrijaviZaposleni
+        PrijaviZaposleni,
+        VratiListuSviZaposleni,
+        VratiListuSviKategorijaPacijenta,
+        KreirajPacijent,
+        PromeniPacijent
     }
 }

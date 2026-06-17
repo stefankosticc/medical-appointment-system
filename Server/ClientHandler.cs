@@ -61,6 +61,18 @@ namespace Server
                     case Operation.PrijaviZaposleni:
                         response.Data = Controller.Instance.PrijaviZaposleni(serializer.ReadType<Zaposleni>(request.Argument));
                         break;
+                    case Operation.VratiListuSviZaposleni:
+                        response.Data = Controller.Instance.VratiListuSviZaposleni(serializer.ReadType<Zaposleni>(request.Argument));
+                        break;
+                    case Operation.VratiListuSviKategorijaPacijenta:
+                        response.Data = Controller.Instance.VratiListuSviKategorijaPacijenta(serializer.ReadType<KategorijaPacijenta>(request.Argument));
+                        break;
+                    case Operation.KreirajPacijent:
+                        response.Data = Controller.Instance.KreirajPacijent(serializer.ReadType<Pacijent>(request.Argument));
+                        break;
+                    case Operation.PromeniPacijent:
+                        response.Data = Controller.Instance.PromeniPacijent(serializer.ReadType<Pacijent>(request.Argument));
+                        break;
                 }
             }
             catch (Exception e)

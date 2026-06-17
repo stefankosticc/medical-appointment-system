@@ -50,5 +50,57 @@ namespace Client
 
             return response;
         }
+
+        public Response VratiListuSviZaposleni(Zaposleni zaposleni)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.VratiListuSviZaposleni,
+                Argument = zaposleni
+            };
+            serializer.Send(request);
+            Response response = serializer.Receive<Response>();
+            response.Data = serializer.ReadType<List<Zaposleni>>(response.Data);
+            return response;
+        }
+
+        public Response VratiListuSviKategorijaPacijenta(KategorijaPacijenta kategorija)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.VratiListuSviKategorijaPacijenta,
+                Argument = kategorija
+            };
+            serializer.Send(request);
+            Response response = serializer.Receive<Response>();
+            response.Data = serializer.ReadType<List<KategorijaPacijenta>>(response.Data);
+            return response;
+        }
+
+        public Response KreirajPacijent(Pacijent pacijent)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.KreirajPacijent,
+                Argument = pacijent
+            };
+            serializer.Send(request);
+            Response response = serializer.Receive<Response>();
+            response.Data = serializer.ReadType<Pacijent>(response.Data);
+            return response;
+        }
+
+        public Response PromeniPacijent(Pacijent pacijent)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.PromeniPacijent,
+                Argument = pacijent
+            };
+            serializer.Send(request);
+            Response response = serializer.Receive<Response>();
+            response.Data = serializer.ReadType<Pacijent>(response.Data);
+            return response;
+        }
     }
 }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
+﻿using Client.Session;
 
 namespace Client.Forms
 {
@@ -13,6 +7,11 @@ namespace Client.Forms
         public FrmGlavna()
         {
             InitializeComponent();
+        }
+
+        private void btnPacijenti_Click(object sender, EventArgs e)
+        {
+            Koordinator.Instance.OtvoriPacijentPanel(panelContent);
         }
     }
 }

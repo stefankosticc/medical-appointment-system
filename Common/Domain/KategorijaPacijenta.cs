@@ -17,19 +17,33 @@ namespace Common.Domain
 
         public string InsertValues => $"'{Naziv}', '{Popust}'";
 
-        public string SelectColumns => throw new NotImplementedException();
+        public string SelectColumns => "id, naziv, popust";
 
-        public string JoinClause => throw new NotImplementedException();
+        public string JoinClause => "";
 
-        public string SetClause => throw new NotImplementedException();
+        public string SetClause => "";
 
-        public string PrimaryKeyClause => throw new NotImplementedException();
+        public string PrimaryKeyClause => "";
 
-        public string WhereClause { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string WhereClause { get; set; }
 
         public List<IDomainObject> All(SqlDataReader reader)
         {
-            throw new NotImplementedException();
+            List<IDomainObject> kategorije = new List<IDomainObject>();
+
+            while (reader.Read())
+            {
+                KategorijaPacijenta k = new KategorijaPacijenta
+                {
+                    Id = (long)reader["id"],
+                    Naziv = reader["naziv"].ToString().Trim(),
+                    Popust = (decimal)reader["popust"]
+                };
+
+                kategorije.Add(k);
+            }
+
+            return kategorije;
         }
     }
 }

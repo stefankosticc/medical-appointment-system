@@ -12,7 +12,7 @@ namespace DBBroker
 
         public DbConnection()
         {
-            connection = new SqlConnection("Data Source=(localdb)\\mssqllocaldb;Initial Catalog=medicalAppointmentSystem;Integrated Security=True;Encrypt=True");
+            connection = new SqlConnection("Data Source=.\\SQLEXPRESS;Initial Catalog=medicalAppointmentSystem;Integrated Security=True;Encrypt=False");
         }
 
         public void OpenConnection()
