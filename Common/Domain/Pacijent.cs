@@ -3,6 +3,7 @@ using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace Common.Domain
 {
@@ -15,7 +16,7 @@ namespace Common.Domain
         public Pol Pol { get; set; }
         public string Email { get; set; }
         public string BrojTelefona { get; set; }
-        public KategorijaPacijenta KategorijaPacijenta { get; set; }
+        public KategorijaPacijenta KategorijaPacijenta { get; set; } = new KategorijaPacijenta();
 
         public string TableName => "Pacijent";
 
@@ -26,7 +27,7 @@ namespace Common.Domain
         public string SelectColumns => "p.id, p.ime, p.prezime, p.datRodjenja, p.pol, p.email, p.brTelefona, k.id as idKategorijaPacijenta, k.naziv, k.popust";
 
         public string JoinClause => "p JOIN KategorijaPacijenta k ON p.idKategorijaPacijenta = k.id";
-
+        
         public string SetClause => $"ime='{Ime}', prezime='{Prezime}', datRodjenja='{DatumRodjenja}', pol={(int)Pol}, email='{Email}', brTelefona='{BrojTelefona}', idKategorijaPacijenta={KategorijaPacijenta.Id}";
 
         public string PrimaryKeyClause => $"id = {Id}";
@@ -44,7 +45,7 @@ namespace Common.Domain
                     Id = (long)reader["id"],
                     Ime = reader["ime"].ToString().Trim(),
                     Prezime = reader["prezime"].ToString().Trim(),
-                    DatumRodjenja = (DateOnly)reader["datRodjenja"],
+                    DatumRodjenja = DateOnly.FromDateTime((DateTime)reader["datRodjenja"]),
                     Pol = (Pol)(int)reader["pol"],
                     Email = reader["email"].ToString().Trim(),
                     BrojTelefona = reader["brTelefona"].ToString().Trim(),

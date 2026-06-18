@@ -1,4 +1,4 @@
-﻿using Client.Session;
+using Client.Session;
 using Common.Domain.Enums;
 
 namespace Client.Forms
@@ -6,6 +6,7 @@ namespace Client.Forms
     public partial class FrmPacijent : Form
     {
         private ModeForme _mode;
+        private bool _btnKliknuto = false;
 
         public FrmPacijent(ModeForme mode)
         {
@@ -28,26 +29,42 @@ namespace Client.Forms
             {
                 btnSacuvaj.Visible = false;
                 btnIzmeni.Visible = true;
-                btnOdustani.Text = "Obriši";
+                btnOdustani.Text = "Odustani";
             }
         }
 
         private void btnSacuvaj_Click(object sender, EventArgs e)
         {
+            _btnKliknuto = true;
             Koordinator.Instance.KreirajPacijentGuiController.SacuvajPacijenta();
+            _btnKliknuto = false;
         }
 
         private void btnIzmeni_Click(object sender, EventArgs e)
         {
-           // Koordinator.Instance.PromeniPacijentGuiController.SacuvajPacijenta();
+            _btnKliknuto = true;
+            Koordinator.Instance.KreirajPacijentGuiController.SacuvajPacijenta();
+            _btnKliknuto = false;
         }
 
         private void btnOdustani_Click(object sender, EventArgs e)
         {
+            _btnKliknuto = true;
             if (_mode == ModeForme.Kreiraj)
                 Koordinator.Instance.KreirajPacijentGuiController.OdustaniKreiraj();
-            //else
-              //  Koordinator.Instance.PromeniPacijentGuiController.OdustaniPromeni();
+            else
+                Koordinator.Instance.KreirajPacijentGuiController.OdustaniPromeni();
+        }
+
+        private void FrmPacijent_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (_btnKliknuto || e.CloseReason != CloseReason.UserClosing) return;
+
+            _btnKliknuto = true;
+            if (_mode == ModeForme.Kreiraj)
+                Koordinator.Instance.KreirajPacijentGuiController.OdustaniKreiraj();
+            else
+                Koordinator.Instance.KreirajPacijentGuiController.OdustaniPromeni();
         }
     }
 }

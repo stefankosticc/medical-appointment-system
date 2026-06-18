@@ -38,7 +38,7 @@ namespace Client.UserControls
             {
                 Name = "colRb",
                 HeaderText = "#",
-                Width = 50,
+                Width = 40,
                 ReadOnly = true,
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.None,
                 DefaultCellStyle = new DataGridViewCellStyle
@@ -46,6 +46,13 @@ namespace Client.UserControls
                     ForeColor = Color.FromArgb(170, 170, 170),
                     Alignment = DataGridViewContentAlignment.MiddleCenter,
                     Padding = new Padding(0)
+                },
+                HeaderCell =
+                {
+                    Style = new DataGridViewCellStyle
+                    {
+                        Alignment = DataGridViewContentAlignment.MiddleCenter
+                    }
                 }
             };
 
@@ -72,11 +79,15 @@ namespace Client.UserControls
                 DefaultCellStyle = new DataGridViewCellStyle
                 {
                     ForeColor = Color.FromArgb(214, 34, 70),
-                    SelectionForeColor = Color.FromArgb(214,34,70),
+                    SelectionForeColor = Color.FromArgb(214, 34, 70),
                     Font = new Font("Segoe UI", 9.5F, FontStyle.Bold),
                     Alignment = DataGridViewContentAlignment.MiddleRight,
                     Padding = new Padding(0, 0, 20, 0)
-                }
+                },
+                HeaderCell = { Style = new DataGridViewCellStyle
+                {
+                    Alignment = DataGridViewContentAlignment.MiddleRight
+                }}
             };
 
             dgvUsluge.Columns.AddRange(colRb, colNaziv, colCena);

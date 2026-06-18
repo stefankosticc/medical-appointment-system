@@ -43,6 +43,7 @@ namespace Client.Session
         // Kontroleri
         public LoginGuiController LoginGuiController { get; set; }
         public KreirajPacijentGuiController KreirajPacijentGuiController { get; set; }
+        public PretraziPacijentGuiController PretraziPacijentGuiController { get; set; }
         public UbaciUslugaGuiController UbaciUslugaGuiController { get; set; }
 
         internal void OtvoriLoginFormu()
@@ -72,14 +73,16 @@ namespace Client.Session
 
         internal void OtvoriUslugaPanel(Panel panelContent)
         {
-            Response response = Communication.Instance.VratiListuSviUsluga(new Usluga());
-            if (response.ExceptionMessage == null)
-                ListaUsluga = response.Data as List<Usluga>;
-
             UslugaUC uc = new UslugaUC();
             uc.Dock = DockStyle.Fill;
             panelContent.Controls.Clear();
             panelContent.Controls.Add(uc);
+        }
+
+        internal void InicijalizujPretraziPacijentKontroler(PacijentUC uc)
+        {
+            PretraziPacijentGuiController = new PretraziPacijentGuiController(uc);
+            KreirajPacijentGuiController = new KreirajPacijentGuiController(null);
         }
 
         internal void OtvoriKreirajPacijentFormu()
@@ -91,7 +94,7 @@ namespace Client.Session
         internal void OtvoriPromeniPacijentFormu()
         {
             FrmPacijent = new FrmPacijent(ModeForme.Promeni);
-            // PromeniPacijentGuiController = new PromeniPacijentGuiController(FrmPacijent);
+            KreirajPacijentGuiController = new KreirajPacijentGuiController(FrmPacijent);
         }
 
         internal void OtvoriUbaciUslugaFormu()

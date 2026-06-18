@@ -14,7 +14,7 @@ namespace Server.SystemOperations.PacijentSO
 
         protected override void IzvrsenjeSO()
         {
-            repository.InsertInto(_pacijent);
+            _pacijent.Id = repository.InsertIntoOutput(_pacijent);
             Result = _pacijent;
         }
     }

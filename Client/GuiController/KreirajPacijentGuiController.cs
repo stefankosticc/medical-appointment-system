@@ -18,6 +18,27 @@ namespace Client.GuiController
 
         internal void KreirajPacijenta()
         {
+            Pacijent prazanPacijent = new Pacijent
+            {
+                Ime = "",
+                Prezime = "",
+                DatumRodjenja = DateOnly.FromDateTime(DateTime.Today),
+                Pol = Pol.MUŠKI,
+                Email = "",
+                BrojTelefona = "",
+                KategorijaPacijenta = Koordinator.Instance.ListaKategorijaPacijenta?.FirstOrDefault() ?? new KategorijaPacijenta { Id = 1 }
+            };
+
+            Response response = Communication.Instance.KreirajPacijent(prazanPacijent);
+
+            if (response.ExceptionMessage != null || response.Data == null)
+            {
+                MessageBox.Show(_frm, "Sistem ne može da kreira pacijenta.", "GREŠKA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            Koordinator.Instance.IzabraniPacijent = response.Data as Pacijent;
+            MessageBox.Show(_frm, "Sistem je kreirao pacijenta.", "INFORMACIJA", MessageBoxButtons.OK, MessageBoxIcon.Information);
             _frm.ShowDialog();
         }
 
@@ -29,6 +50,7 @@ namespace Client.GuiController
             {
                 Pacijent pacijent = new Pacijent
                 {
+                    Id = Koordinator.Instance.IzabraniPacijent.Id,
                     Ime = _frm.txtIme.Text.Trim(),
                     Prezime = _frm.txtPrezime.Text.Trim(),
                     DatumRodjenja = DateOnly.FromDateTime(_frm.dtpDatumRodjenja.Value),
@@ -38,15 +60,15 @@ namespace Client.GuiController
                     KategorijaPacijenta = (KategorijaPacijenta)_frm.cmbKategorijaPacijenta.SelectedItem
                 };
 
-                Response response = Communication.Instance.KreirajPacijent(pacijent);
+                Response response = Communication.Instance.PromeniPacijent(pacijent);
 
                 if (response.ExceptionMessage != null || response.Data == null)
                 {
-                    MessageBox.Show(_frm, "Sistem ne može da kreira pacijenta.", "GREŠKA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(_frm, "Sistem ne može da zapamti pacijenta.", "GREŠKA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                MessageBox.Show(_frm, "Sistem je kreirao pacijenta.", "USPEŠNO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(_frm, "Sistem je zapamtio pacijenta.", "USPEŠNO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Koordinator.Instance.IzabraniPacijent = response.Data as Pacijent;
                 _frm.Close();
             }
@@ -56,8 +78,43 @@ namespace Client.GuiController
             }
         }
 
+        internal void PromeniPacijenta()
+        {
+            Pacijent p = Koordinator.Instance.IzabraniPacijent;
+
+            _frm.txtIme.Text = p.Ime;
+            _frm.txtPrezime.Text = p.Prezime;
+            _frm.dtpDatumRodjenja.Value = p.DatumRodjenja.ToDateTime(TimeOnly.MinValue);
+            _frm.cmbPol.SelectedItem = p.Pol;
+            _frm.txtEmail.Text = p.Email;
+            _frm.txtBrojTelefona.Text = p.BrojTelefona;
+            _frm.cmbKategorijaPacijenta.SelectedValue = p.KategorijaPacijenta.Id;
+
+            _frm.ShowDialog();
+        }
+
+        internal void OdustaniPromeni()
+        {
+            _frm.Close();
+        }
+
+        internal void ObrisiPacijenta()
+        {
+            Response response = Communication.Instance.ObrisiPacijent(Koordinator.Instance.IzabraniPacijent);
+
+            if (response.ExceptionMessage != null)
+            {
+                MessageBox.Show("Sistem ne može da obriše pacijenta.", "GREŠKA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            MessageBox.Show("Sistem je obrisao pacijenta.", "INFORMACIJA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Koordinator.Instance.IzabraniPacijent = null;
+        }
+
         internal void OdustaniKreiraj()
         {
+            ObrisiPacijenta();
             _frm.Close();
         }
 

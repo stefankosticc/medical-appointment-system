@@ -150,6 +150,7 @@ namespace Client.Forms
             Controls.Add(btnSacuvaj);
             Controls.Add(btnIzmeni);
             Controls.Add(btnOdustani);
+            FormClosing += FrmPacijent_FormClosing;
             ResumeLayout(false);
             PerformLayout();
         }

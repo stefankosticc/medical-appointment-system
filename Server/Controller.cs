@@ -59,6 +59,33 @@ namespace Server
             return so.Result;
         }
 
+        internal List<Pacijent> VratiListuSviPacijent(Pacijent pacijent)
+        {
+            VratiListuSviPacijentSO so = new VratiListuSviPacijentSO(pacijent);
+            so.OpsteIzvrsenjeSO();
+            return so.ResultList;
+        }
+
+        internal List<Pacijent> PretraziPacijent(Pacijent kriterijum)
+        {
+            PretraziPacijentSO so = new PretraziPacijentSO(kriterijum);
+            so.OpsteIzvrsenjeSO();
+            return so.ResultList;
+        }
+
+        internal void ObrisiPacijent(Pacijent pacijent)
+        {
+            ObrisiPacijentSO so = new ObrisiPacijentSO(pacijent);
+            so.OpsteIzvrsenjeSO();
+        }
+
+        internal List<Pacijent> VratiListuPacijent(Pacijent kriterijum)
+        {
+            VratiListuPacijentSO so = new VratiListuPacijentSO(kriterijum);
+            so.OpsteIzvrsenjeSO();
+            return so.ResultList;
+        }
+
         internal List<Usluga> VratiListuSviUsluga(Usluga usluga)
         {
             VratiListuSviUslugaSO so = new VratiListuSviUslugaSO(usluga);

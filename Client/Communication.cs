@@ -103,6 +103,56 @@ namespace Client
             return response;
         }
 
+        public Response VratiListuSviPacijent(Pacijent pacijent)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.VratiListuSviPacijent,
+                Argument = pacijent
+            };
+            serializer.Send(request);
+            Response response = serializer.Receive<Response>();
+            response.Data = serializer.ReadType<List<Pacijent>>(response.Data);
+            return response;
+        }
+
+        public Response PretraziPacijent(Pacijent kriterijum)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.PretraziPacijent,
+                Argument = kriterijum
+            };
+            serializer.Send(request);
+            Response response = serializer.Receive<Response>();
+            response.Data = serializer.ReadType<List<Pacijent>>(response.Data);
+            return response;
+        }
+
+        public Response VratiListuPacijent(Pacijent kriterijum)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.VratiListuPacijent,
+                Argument = kriterijum
+            };
+            serializer.Send(request);
+            Response response = serializer.Receive<Response>();
+            response.Data = serializer.ReadType<List<Pacijent>>(response.Data);
+            return response;
+        }
+
+        public Response ObrisiPacijent(Pacijent pacijent)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.ObrisiPacijent,
+                Argument = pacijent
+            };
+            serializer.Send(request);
+            return serializer.Receive<Response>();
+        }
+
         public Response VratiListuSviUsluga(Usluga usluga)
         {
             Request request = new Request

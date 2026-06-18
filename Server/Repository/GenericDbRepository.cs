@@ -78,6 +78,15 @@ namespace Server.Repository
             cmnd.Dispose();
         }
 
+        public long InsertIntoOutput(IDomainObject entity)
+        {
+            SqlCommand cmd = broker.CreateCommand();
+            cmd.CommandText = $"INSERT INTO {entity.TableName} ({entity.InsertColumns}) OUTPUT INSERTED.id VALUES ({entity.InsertValues})";
+            object result = cmd.ExecuteScalar();
+            cmd.Dispose();
+            return Convert.ToInt64(result);
+        }
+
         public void Update(IDomainObject entity)
         {
             SqlCommand cmnd = broker.CreateCommand();

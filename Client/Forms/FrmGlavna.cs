@@ -9,6 +9,8 @@ namespace Client.Forms
             InitializeComponent();
             lblUsername.Text = Koordinator.Instance.UlogovanZaposleni.ToString();
             lblAvatar.Text = lblUsername.Text[0].ToString();
+            // kada se inicijalizuje ovaj panel neka bude otvoren
+            Koordinator.Instance.OtvoriPacijentPanel(panelContent);
         }
 
         private void btnPacijenti_Click(object sender, EventArgs e)
