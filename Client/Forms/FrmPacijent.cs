@@ -30,6 +30,8 @@ namespace Client.Forms
                 btnSacuvaj.Visible = false;
                 btnIzmeni.Visible = true;
                 btnOdustani.Text = "Odustani";
+                dtpDatumRodjenja.Enabled = false;
+                cmbPol.Enabled = false;
             }
         }
 

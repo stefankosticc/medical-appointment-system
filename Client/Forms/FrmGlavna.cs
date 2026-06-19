@@ -22,5 +22,10 @@ namespace Client.Forms
         {
             Koordinator.Instance.OtvoriUslugaPanel(panelContent);
         }
+
+        private void btnZakazivanja_Click(object sender, EventArgs e)
+        {
+            Koordinator.Instance.OtvoriZakazivanjePanel(panelContent);
+        }
     }
 }

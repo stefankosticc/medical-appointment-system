@@ -153,7 +153,8 @@ namespace Client.Forms
             btnZakazivanja.Text = "Zakazivanja";
             btnZakazivanja.TextAlign = ContentAlignment.MiddleLeft;
             btnZakazivanja.UseVisualStyleBackColor = false;
-            // 
+            btnZakazivanja.Click += btnZakazivanja_Click;
+            //
             // lblAdministracija
             // 
             lblAdministracija.Font = new Font("Segoe UI", 7.5F, FontStyle.Bold);

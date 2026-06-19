@@ -94,6 +94,21 @@ namespace Server
                     case Operation.PromeniUsluga:
                         response.Data = Controller.Instance.PromeniUsluga(serializer.ReadType<Usluga>(request.Argument));
                         break;
+                    case Operation.KreirajZakazivanje:
+                        response.Data = Controller.Instance.KreirajZakazivanje(serializer.ReadType<Zakazivanje>(request.Argument));
+                        break;
+                    case Operation.PromeniZakazivanje:
+                        response.Data = Controller.Instance.PromeniZakazivanje(serializer.ReadType<Zakazivanje>(request.Argument));
+                        break;
+                    case Operation.VratiListuZakazivanje:
+                        response.Data = Controller.Instance.VratiListuZakazivanje(serializer.ReadType<Zakazivanje>(request.Argument));
+                        break;
+                    case Operation.PretraziZakazivanje:
+                        response.Data = Controller.Instance.PretraziZakazivanje(serializer.ReadType<Zakazivanje>(request.Argument));
+                        break;
+                    case Operation.ObrisiZakazivanje:
+                        Controller.Instance.ObrisiZakazivanje(serializer.ReadType<Zakazivanje>(request.Argument));
+                        break;
                 }
             }
             catch (Exception e)

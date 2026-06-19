@@ -34,6 +34,8 @@ namespace Common.Domain
 
         public string WhereClause { get; set; }
 
+        public override string ToString() => $"{Ime} {Prezime}";
+
         public List<IDomainObject> All(SqlDataReader reader)
         {
             List<IDomainObject> pacijenti = new List<IDomainObject>();

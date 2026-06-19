@@ -103,7 +103,6 @@ namespace Client.UserControls
             // 
             dgvUsluge.AllowUserToAddRows = false;
             dgvUsluge.AllowUserToDeleteRows = false;
-            dgvUsluge.AutoGenerateColumns = false;
             dgvUsluge.BackgroundColor = Color.White;
             dgvUsluge.BorderStyle = BorderStyle.None;
             dgvUsluge.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
@@ -211,7 +210,7 @@ namespace Client.UserControls
             // 
             // btnUbaci
             // 
-            btnUbaci.BackColor = Color.FromArgb(214, 34, 70);
+            btnUbaci.BackColor = Color.FromArgb(93, 169, 233);
             btnUbaci.Cursor = Cursors.Hand;
             btnUbaci.FlatAppearance.BorderSize = 0;
             btnUbaci.FlatStyle = FlatStyle.Flat;

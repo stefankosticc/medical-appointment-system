@@ -58,14 +58,6 @@ namespace Client.GuiController
                 return false;
             }
 
-            bool validEmail = MailAddress.TryCreate(frmLogin.textBoxEmail.Text, out _);
-            if (!validEmail)
-            {
-                MessageBox.Show(frmLogin, "Email nije validan!", "GREŠKA", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                frmLogin.textBoxEmail.BackColor = Color.Red;
-                return false;
-            }
-
             return true;
         }
 

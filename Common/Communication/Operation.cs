@@ -13,6 +13,7 @@ namespace Common.Communication
         PromeniPacijent,
         KreirajZakazivanje,
         PromeniZakazivanje,
+        ObrisiZakazivanje,
         VratiListuSviPacijent,
         VratiListuSviUsluga,
         PretraziZakazivanje,

@@ -15,6 +15,7 @@ namespace Client.UserControls
 
         private void FormatirajGrid()
         {
+            dgvUsluge.AutoGenerateColumns = false;
             dgvUsluge.ColumnHeadersDefaultCellStyle = new DataGridViewCellStyle
             {
                 BackColor = Color.White,

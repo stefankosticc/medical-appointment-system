@@ -191,5 +191,68 @@ namespace Client
             response.Data = serializer.ReadType<Usluga>(response.Data);
             return response;
         }
+
+        public Response KreirajZakazivanje(Zakazivanje zakazivanje)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.KreirajZakazivanje,
+                Argument = zakazivanje
+            };
+            serializer.Send(request);
+            Response response = serializer.Receive<Response>();
+            response.Data = serializer.ReadType<Zakazivanje>(response.Data);
+            return response;
+        }
+
+        public Response PromeniZakazivanje(Zakazivanje zakazivanje)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.PromeniZakazivanje,
+                Argument = zakazivanje
+            };
+            serializer.Send(request);
+            Response response = serializer.Receive<Response>();
+            response.Data = serializer.ReadType<Zakazivanje>(response.Data);
+            return response;
+        }
+
+        public Response VratiListuZakazivanje(Zakazivanje kriterijum)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.VratiListuZakazivanje,
+                Argument = kriterijum
+            };
+            serializer.Send(request);
+            Response response = serializer.Receive<Response>();
+            response.Data = serializer.ReadType<List<Zakazivanje>>(response.Data);
+            return response;
+        }
+
+        public Response PretraziZakazivanje(Zakazivanje zakazivanje)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.PretraziZakazivanje,
+                Argument = zakazivanje
+            };
+            serializer.Send(request);
+            Response response = serializer.Receive<Response>();
+            response.Data = serializer.ReadType<Zakazivanje>(response.Data);
+            return response;
+        }
+
+        public Response ObrisiZakazivanje(Zakazivanje zakazivanje)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.ObrisiZakazivanje,
+                Argument = zakazivanje
+            };
+            serializer.Send(request);
+            return serializer.Receive<Response>();
+        }
     }
 }

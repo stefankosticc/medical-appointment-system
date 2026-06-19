@@ -1,6 +1,6 @@
 namespace Client.UserControls
 {
-    partial class PacijentUC
+    partial class ZakazivanjeUC
     {
         private System.ComponentModel.IContainer components = null;
 
@@ -20,16 +20,18 @@ namespace Client.UserControls
             lblPageSubtitle = new Label();
             pnlCardOuter = new Panel();
             pnlCard = new Panel();
-            dgvPacijenti = new DataGridView();
+            dgvZakazivanja = new DataGridView();
             pnlCardFooterDiv = new Panel();
             pnlCardFooter = new Panel();
             lblStatusDot = new Label();
             lblStatus = new Label();
             pnlCardHeaderDiv = new Panel();
             pnlCardFilter = new Panel();
-            txtIme = new TextBox();
-            txtPrezime = new TextBox();
-            cmbKategorija = new ComboBox();
+            btnIzaberiZaposleni = new Button();
+            lblIzabraniZaposleni = new Label();
+            btnIzaberiPacijent = new Button();
+            lblIzabraniPacijent = new Label();
+            cmbUsluga = new ComboBox();
             btnPretrazi = new Button();
             pnlCardHeader = new Panel();
             lblCardTitle = new Label();
@@ -40,7 +42,7 @@ namespace Client.UserControls
             pnlPageHeader.SuspendLayout();
             pnlCardOuter.SuspendLayout();
             pnlCard.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvPacijenti).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvZakazivanja).BeginInit();
             pnlCardFooter.SuspendLayout();
             pnlCardFilter.SuspendLayout();
             pnlCardHeader.SuspendLayout();
@@ -65,20 +67,20 @@ namespace Client.UserControls
             lblPageTitle.ForeColor = Color.FromArgb(18, 18, 18);
             lblPageTitle.Location = new Point(24, 10);
             lblPageTitle.Name = "lblPageTitle";
-            lblPageTitle.Size = new Size(138, 41);
+            lblPageTitle.Size = new Size(183, 41);
             lblPageTitle.TabIndex = 0;
-            lblPageTitle.Text = "Pacijenti";
+            lblPageTitle.Text = "Zakazivanja";
             // 
             // lblPageSubtitle
             // 
             lblPageSubtitle.AutoSize = true;
             lblPageSubtitle.Font = new Font("Segoe UI", 9F);
             lblPageSubtitle.ForeColor = Color.FromArgb(140, 140, 140);
-            lblPageSubtitle.Location = new Point(29, 50);
+            lblPageSubtitle.Location = new Point(30, 50);
             lblPageSubtitle.Name = "lblPageSubtitle";
-            lblPageSubtitle.Size = new Size(179, 15);
+            lblPageSubtitle.Size = new Size(187, 15);
             lblPageSubtitle.TabIndex = 1;
-            lblPageSubtitle.Text = "Pregled i upravljanje pacijentima";
+            lblPageSubtitle.Text = "Upravljanje zakazanim pregledima";
             // 
             // pnlCardOuter
             // 
@@ -94,7 +96,7 @@ namespace Client.UserControls
             // pnlCard
             // 
             pnlCard.BackColor = Color.White;
-            pnlCard.Controls.Add(dgvPacijenti);
+            pnlCard.Controls.Add(dgvZakazivanja);
             pnlCard.Controls.Add(pnlCardFooterDiv);
             pnlCard.Controls.Add(pnlCardFooter);
             pnlCard.Controls.Add(pnlCardHeaderDiv);
@@ -106,30 +108,30 @@ namespace Client.UserControls
             pnlCard.Size = new Size(712, 478);
             pnlCard.TabIndex = 0;
             // 
-            // dgvPacijenti
+            // dgvZakazivanja
             // 
-            dgvPacijenti.AllowUserToAddRows = false;
-            dgvPacijenti.AllowUserToDeleteRows = false;
-            dgvPacijenti.BackgroundColor = Color.White;
-            dgvPacijenti.BorderStyle = BorderStyle.None;
-            dgvPacijenti.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dgvPacijenti.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dgvPacijenti.ColumnHeadersHeight = 34;
-            dgvPacijenti.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvPacijenti.Dock = DockStyle.Fill;
-            dgvPacijenti.EnableHeadersVisualStyles = false;
-            dgvPacijenti.GridColor = Color.FromArgb(238, 238, 238);
-            dgvPacijenti.Location = new Point(0, 107);
-            dgvPacijenti.MultiSelect = false;
-            dgvPacijenti.Name = "dgvPacijenti";
-            dgvPacijenti.ReadOnly = true;
-            dgvPacijenti.RowHeadersVisible = false;
-            dgvPacijenti.RowTemplate.Height = 42;
-            dgvPacijenti.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvPacijenti.Size = new Size(712, 334);
-            dgvPacijenti.TabIndex = 0;
-            dgvPacijenti.CellFormatting += dgvPacijenti_CellFormatting;
-            dgvPacijenti.SelectionChanged += dgvPacijenti_SelectionChanged;
+            dgvZakazivanja.AllowUserToAddRows = false;
+            dgvZakazivanja.AllowUserToDeleteRows = false;
+            dgvZakazivanja.BackgroundColor = Color.White;
+            dgvZakazivanja.BorderStyle = BorderStyle.None;
+            dgvZakazivanja.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvZakazivanja.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvZakazivanja.ColumnHeadersHeight = 34;
+            dgvZakazivanja.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvZakazivanja.Dock = DockStyle.Fill;
+            dgvZakazivanja.EnableHeadersVisualStyles = false;
+            dgvZakazivanja.GridColor = Color.FromArgb(238, 238, 238);
+            dgvZakazivanja.Location = new Point(0, 107);
+            dgvZakazivanja.MultiSelect = false;
+            dgvZakazivanja.Name = "dgvZakazivanja";
+            dgvZakazivanja.ReadOnly = true;
+            dgvZakazivanja.RowHeadersVisible = false;
+            dgvZakazivanja.RowTemplate.Height = 42;
+            dgvZakazivanja.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvZakazivanja.Size = new Size(712, 334);
+            dgvZakazivanja.TabIndex = 0;
+            dgvZakazivanja.CellFormatting += dgvZakazivanja_CellFormatting;
+            dgvZakazivanja.SelectionChanged += dgvZakazivanja_SelectionChanged;
             // 
             // pnlCardFooterDiv
             // 
@@ -169,9 +171,9 @@ namespace Client.UserControls
             lblStatus.ForeColor = Color.FromArgb(130, 130, 130);
             lblStatus.Location = new Point(32, 10);
             lblStatus.Name = "lblStatus";
-            lblStatus.Size = new Size(111, 15);
+            lblStatus.Size = new Size(119, 15);
             lblStatus.TabIndex = 1;
-            lblStatus.Text = "Nijedan nije izabran";
+            lblStatus.Text = "Nijedno nije izabrano";
             // 
             // pnlCardHeaderDiv
             // 
@@ -184,49 +186,83 @@ namespace Client.UserControls
             // 
             // pnlCardFilter
             // 
-            pnlCardFilter.BackColor = Color.White;
-            pnlCardFilter.Controls.Add(txtIme);
-            pnlCardFilter.Controls.Add(txtPrezime);
-            pnlCardFilter.Controls.Add(cmbKategorija);
+            pnlCardFilter.BackColor = Color.FromArgb(250, 250, 250);
+            pnlCardFilter.Controls.Add(btnIzaberiZaposleni);
+            pnlCardFilter.Controls.Add(lblIzabraniZaposleni);
+            pnlCardFilter.Controls.Add(btnIzaberiPacijent);
+            pnlCardFilter.Controls.Add(lblIzabraniPacijent);
+            pnlCardFilter.Controls.Add(cmbUsluga);
             pnlCardFilter.Controls.Add(btnPretrazi);
             pnlCardFilter.Dock = DockStyle.Top;
             pnlCardFilter.Location = new Point(0, 54);
             pnlCardFilter.Name = "pnlCardFilter";
             pnlCardFilter.Size = new Size(712, 52);
-            pnlCardFilter.TabIndex = 4;
+            pnlCardFilter.TabIndex = 5;
             // 
-            // txtIme
+            // btnIzaberiZaposleni
             // 
-            txtIme.BackColor = Color.FromArgb(245, 245, 245);
-            txtIme.BorderStyle = BorderStyle.FixedSingle;
-            txtIme.Font = new Font("Segoe UI", 9.5F);
-            txtIme.Location = new Point(16, 13);
-            txtIme.Name = "txtIme";
-            txtIme.PlaceholderText = "Ime";
-            txtIme.Size = new Size(120, 24);
-            txtIme.TabIndex = 0;
+            btnIzaberiZaposleni.BackColor = Color.FromArgb(245, 245, 245);
+            btnIzaberiZaposleni.Cursor = Cursors.Hand;
+            btnIzaberiZaposleni.FlatAppearance.BorderColor = Color.FromArgb(210, 210, 210);
+            btnIzaberiZaposleni.FlatStyle = FlatStyle.Flat;
+            btnIzaberiZaposleni.Font = new Font("Segoe UI", 8.5F);
+            btnIzaberiZaposleni.ForeColor = Color.FromArgb(80, 80, 80);
+            btnIzaberiZaposleni.Location = new Point(16, 11);
+            btnIzaberiZaposleni.Name = "btnIzaberiZaposleni";
+            btnIzaberiZaposleni.Size = new Size(60, 28);
+            btnIzaberiZaposleni.TabIndex = 0;
+            btnIzaberiZaposleni.Text = "Izaberi";
+            btnIzaberiZaposleni.UseVisualStyleBackColor = false;
+            btnIzaberiZaposleni.Click += btnIzaberiZaposleni_Click;
             // 
-            // txtPrezime
+            // lblIzabraniZaposleni
             // 
-            txtPrezime.BackColor = Color.FromArgb(245, 245, 245);
-            txtPrezime.BorderStyle = BorderStyle.FixedSingle;
-            txtPrezime.Font = new Font("Segoe UI", 9.5F);
-            txtPrezime.Location = new Point(144, 13);
-            txtPrezime.Name = "txtPrezime";
-            txtPrezime.PlaceholderText = "Prezime";
-            txtPrezime.Size = new Size(120, 24);
-            txtPrezime.TabIndex = 1;
+            lblIzabraniZaposleni.Font = new Font("Segoe UI", 9F, FontStyle.Italic);
+            lblIzabraniZaposleni.ForeColor = Color.FromArgb(130, 130, 130);
+            lblIzabraniZaposleni.Location = new Point(81, 11);
+            lblIzabraniZaposleni.Name = "lblIzabraniZaposleni";
+            lblIzabraniZaposleni.Size = new Size(115, 28);
+            lblIzabraniZaposleni.TabIndex = 1;
+            lblIzabraniZaposleni.Text = "Nije izabran";
+            lblIzabraniZaposleni.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // cmbKategorija
+            // btnIzaberiPacijent
             // 
-            cmbKategorija.BackColor = Color.FromArgb(245, 245, 245);
-            cmbKategorija.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbKategorija.FlatStyle = FlatStyle.Flat;
-            cmbKategorija.Font = new Font("Segoe UI", 9.5F);
-            cmbKategorija.Location = new Point(272, 13);
-            cmbKategorija.Name = "cmbKategorija";
-            cmbKategorija.Size = new Size(150, 25);
-            cmbKategorija.TabIndex = 2;
+            btnIzaberiPacijent.BackColor = Color.FromArgb(245, 245, 245);
+            btnIzaberiPacijent.Cursor = Cursors.Hand;
+            btnIzaberiPacijent.FlatAppearance.BorderColor = Color.FromArgb(210, 210, 210);
+            btnIzaberiPacijent.FlatStyle = FlatStyle.Flat;
+            btnIzaberiPacijent.Font = new Font("Segoe UI", 8.5F);
+            btnIzaberiPacijent.ForeColor = Color.FromArgb(80, 80, 80);
+            btnIzaberiPacijent.Location = new Point(206, 11);
+            btnIzaberiPacijent.Name = "btnIzaberiPacijent";
+            btnIzaberiPacijent.Size = new Size(60, 28);
+            btnIzaberiPacijent.TabIndex = 2;
+            btnIzaberiPacijent.Text = "Izaberi";
+            btnIzaberiPacijent.UseVisualStyleBackColor = false;
+            btnIzaberiPacijent.Click += btnIzaberiPacijent_Click;
+            // 
+            // lblIzabraniPacijent
+            // 
+            lblIzabraniPacijent.Font = new Font("Segoe UI", 9F, FontStyle.Italic);
+            lblIzabraniPacijent.ForeColor = Color.FromArgb(130, 130, 130);
+            lblIzabraniPacijent.Location = new Point(271, 11);
+            lblIzabraniPacijent.Name = "lblIzabraniPacijent";
+            lblIzabraniPacijent.Size = new Size(115, 28);
+            lblIzabraniPacijent.TabIndex = 3;
+            lblIzabraniPacijent.Text = "Nije izabran";
+            lblIzabraniPacijent.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // cmbUsluga
+            // 
+            cmbUsluga.BackColor = Color.FromArgb(245, 245, 245);
+            cmbUsluga.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbUsluga.FlatStyle = FlatStyle.Flat;
+            cmbUsluga.Font = new Font("Segoe UI", 9F);
+            cmbUsluga.Location = new Point(396, 13);
+            cmbUsluga.Name = "cmbUsluga";
+            cmbUsluga.Size = new Size(160, 23);
+            cmbUsluga.TabIndex = 4;
             // 
             // btnPretrazi
             // 
@@ -234,12 +270,12 @@ namespace Client.UserControls
             btnPretrazi.Cursor = Cursors.Hand;
             btnPretrazi.FlatAppearance.BorderSize = 0;
             btnPretrazi.FlatStyle = FlatStyle.Flat;
-            btnPretrazi.Font = new Font("Segoe UI", 9F);
+            btnPretrazi.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnPretrazi.ForeColor = Color.White;
-            btnPretrazi.Location = new Point(430, 13);
+            btnPretrazi.Location = new Point(566, 11);
             btnPretrazi.Name = "btnPretrazi";
-            btnPretrazi.Size = new Size(90, 26);
-            btnPretrazi.TabIndex = 3;
+            btnPretrazi.Size = new Size(115, 28);
+            btnPretrazi.TabIndex = 5;
             btnPretrazi.Text = "Pretraži";
             btnPretrazi.UseVisualStyleBackColor = false;
             btnPretrazi.Click += btnPretrazi_Click;
@@ -252,7 +288,7 @@ namespace Client.UserControls
             pnlCardHeader.Location = new Point(0, 0);
             pnlCardHeader.Name = "pnlCardHeader";
             pnlCardHeader.Size = new Size(712, 54);
-            pnlCardHeader.TabIndex = 5;
+            pnlCardHeader.TabIndex = 4;
             // 
             // lblCardTitle
             // 
@@ -262,7 +298,7 @@ namespace Client.UserControls
             lblCardTitle.Name = "lblCardTitle";
             lblCardTitle.Size = new Size(300, 54);
             lblCardTitle.TabIndex = 0;
-            lblCardTitle.Text = "Svi pacijenti";
+            lblCardTitle.Text = "Sve rezervacije";
             lblCardTitle.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // pnlButtons
@@ -287,9 +323,9 @@ namespace Client.UserControls
             btnKreiraj.ForeColor = Color.White;
             btnKreiraj.Location = new Point(24, 14);
             btnKreiraj.Name = "btnKreiraj";
-            btnKreiraj.Size = new Size(140, 34);
+            btnKreiraj.Size = new Size(160, 34);
             btnKreiraj.TabIndex = 0;
-            btnKreiraj.Text = "Novi pacijent";
+            btnKreiraj.Text = "Novo zakazivanje";
             btnKreiraj.UseVisualStyleBackColor = false;
             btnKreiraj.Click += btnKreiraj_Click;
             // 
@@ -301,7 +337,7 @@ namespace Client.UserControls
             btnPromeni.FlatStyle = FlatStyle.Flat;
             btnPromeni.Font = new Font("Segoe UI", 9.5F);
             btnPromeni.ForeColor = Color.FromArgb(30, 30, 30);
-            btnPromeni.Location = new Point(172, 14);
+            btnPromeni.Location = new Point(192, 14);
             btnPromeni.Name = "btnPromeni";
             btnPromeni.Size = new Size(120, 34);
             btnPromeni.TabIndex = 1;
@@ -313,11 +349,11 @@ namespace Client.UserControls
             // 
             btnObrisi.BackColor = Color.FromArgb(242, 242, 242);
             btnObrisi.Cursor = Cursors.Hand;
-            btnObrisi.FlatAppearance.BorderColor = Color.FromArgb(214, 34, 70);
+            btnObrisi.FlatAppearance.BorderColor = Color.FromArgb(50, 50, 50);
             btnObrisi.FlatStyle = FlatStyle.Flat;
             btnObrisi.Font = new Font("Segoe UI", 9.5F);
-            btnObrisi.ForeColor = Color.FromArgb(214, 34, 70);
-            btnObrisi.Location = new Point(300, 14);
+            btnObrisi.ForeColor = Color.FromArgb(30, 30, 30);
+            btnObrisi.Location = new Point(320, 14);
             btnObrisi.Name = "btnObrisi";
             btnObrisi.Size = new Size(120, 34);
             btnObrisi.TabIndex = 2;
@@ -325,7 +361,7 @@ namespace Client.UserControls
             btnObrisi.UseVisualStyleBackColor = false;
             btnObrisi.Click += btnObrisi_Click;
             // 
-            // PacijentUC
+            // ZakazivanjeUC
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -333,17 +369,16 @@ namespace Client.UserControls
             Controls.Add(pnlCardOuter);
             Controls.Add(pnlPageHeader);
             Controls.Add(pnlButtons);
-            Name = "PacijentUC";
+            Name = "ZakazivanjeUC";
             Size = new Size(760, 620);
             pnlPageHeader.ResumeLayout(false);
             pnlPageHeader.PerformLayout();
             pnlCardOuter.ResumeLayout(false);
             pnlCard.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvPacijenti).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvZakazivanja).EndInit();
             pnlCardFooter.ResumeLayout(false);
             pnlCardFooter.PerformLayout();
             pnlCardFilter.ResumeLayout(false);
-            pnlCardFilter.PerformLayout();
             pnlCardHeader.ResumeLayout(false);
             pnlButtons.ResumeLayout(false);
             ResumeLayout(false);
@@ -358,21 +393,22 @@ namespace Client.UserControls
         private Panel pnlCard;
         private Panel pnlCardHeader;
         private Label lblCardTitle;
-        private Panel pnlCardFilter;
-        public TextBox txtIme;
-        public TextBox txtPrezime;
-        private Label lblKategorija;
-        public ComboBox cmbKategorija;
-        public Button btnPretrazi;
         private Panel pnlCardHeaderDiv;
+        private Panel pnlCardFilter;
+        private Button btnIzaberiZaposleni;
+        private Label lblIzabraniZaposleni;
+        private Button btnIzaberiPacijent;
+        private Label lblIzabraniPacijent;
+        public ComboBox cmbUsluga;
+        private Button btnPretrazi;
         private Panel pnlCardFooterDiv;
         private Panel pnlCardFooter;
         private Label lblStatusDot;
         private Label lblStatus;
-        public DataGridView dgvPacijenti;
+        public DataGridView dgvZakazivanja;
         private Panel pnlButtons;
         public Button btnKreiraj;
-        public Button btnPromeni;
-        public Button btnObrisi;
+        private Button btnPromeni;
+        private Button btnObrisi;
     }
 }

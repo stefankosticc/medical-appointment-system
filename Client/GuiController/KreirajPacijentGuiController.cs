@@ -135,6 +135,12 @@ namespace Client.GuiController
                 return false;
             }
 
+            if (_frm.dtpDatumRodjenja.Value.Date > DateTime.Today)
+            {
+                MessageBox.Show(_frm, "Datum rođenja mora biti u prošlosti!", "GREŠKA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
             return true;
         }
     }

@@ -2,6 +2,7 @@
 using Server.SystemOperations.KategorijaPacijentaSO;
 using Server.SystemOperations.PacijentSO;
 using Server.SystemOperations.UslugaSO;
+using Server.SystemOperations.ZakazivanjeSO;
 using Server.SystemOperations.ZaposleniSO;
 
 namespace Server
@@ -105,6 +106,40 @@ namespace Server
             PromeniUslugaSO so = new PromeniUslugaSO(usluga);
             so.OpsteIzvrsenjeSO();
             return so.Result;
+        }
+
+        internal Zakazivanje KreirajZakazivanje(Zakazivanje zakazivanje)
+        {
+            KreirajZakazivanjeSO so = new KreirajZakazivanjeSO(zakazivanje);
+            so.OpsteIzvrsenjeSO();
+            return so.Result;
+        }
+
+        internal Zakazivanje PromeniZakazivanje(Zakazivanje zakazivanje)
+        {
+            PromeniZakazivanjeSO so = new PromeniZakazivanjeSO(zakazivanje);
+            so.OpsteIzvrsenjeSO();
+            return so.Result;
+        }
+
+        internal List<Zakazivanje> VratiListuZakazivanje(Zakazivanje kriterijum)
+        {
+            VratiListuZakazivanjaSO so = new VratiListuZakazivanjaSO(kriterijum);
+            so.OpsteIzvrsenjeSO();
+            return so.ResultList;
+        }
+
+        internal Zakazivanje PretraziZakazivanje(Zakazivanje zakazivanje)
+        {
+            PretraziZakazivanjeSO so = new PretraziZakazivanjeSO(zakazivanje);
+            so.OpsteIzvrsenjeSO();
+            return so.Result;
+        }
+
+        internal void ObrisiZakazivanje(Zakazivanje zakazivanje)
+        {
+            ObrisiZakazivanjeSO so = new ObrisiZakazivanjeSO(zakazivanje);
+            so.OpsteIzvrsenjeSO();
         }
     }
 }

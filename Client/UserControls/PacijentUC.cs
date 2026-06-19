@@ -144,6 +144,12 @@ namespace Client.UserControls
                 e.Value = (e.RowIndex + 1).ToString();
                 e.FormattingApplied = true;
             }
+            else if (dgvPacijenti.Columns[e.ColumnIndex].Name == "colDatumRodjenja")
+            {
+                var p = dgvPacijenti.Rows[e.RowIndex].DataBoundItem as Pacijent;
+                e.Value = p?.DatumRodjenja.ToString("dd.MM.yyyy.");
+                e.FormattingApplied = true;
+            }
             else if (dgvPacijenti.Columns[e.ColumnIndex].Name == "colKategorija")
             {
                 var p = dgvPacijenti.Rows[e.RowIndex].DataBoundItem as Pacijent;

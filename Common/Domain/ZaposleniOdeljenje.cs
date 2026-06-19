@@ -10,7 +10,7 @@ namespace Common.Domain
         public Zaposleni Zaposleni { get; set; }
         public Odeljenje Odeljenje { get; set; }
         public DateOnly DatumPocetka { get; set; }
-        public DateOnly DatumZavrsetka { get; set; }
+        public DateOnly? DatumZavrsetka { get; set; }
 
         public string TableName => "ZaposleniOdeljenje";
 
