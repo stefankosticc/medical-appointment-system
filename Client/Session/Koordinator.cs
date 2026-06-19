@@ -46,10 +46,10 @@ namespace Client.Session
 
         // Kontroleri
         public LoginGuiController LoginGuiController { get; set; }
-        public KreirajPacijentGuiController KreirajPacijentGuiController { get; set; }
+        public PacijentGuiController PacijentGuiController { get; set; }
         public PretraziPacijentGuiController PretraziPacijentGuiController { get; set; }
-        public UbaciUslugaGuiController UbaciUslugaGuiController { get; set; }
-        public KreirajZakazivanjeGuiController KreirajZakazivanjeGuiController { get; set; }
+        public UslugaGuiController UslugaGuiController { get; set; }
+        public ZakazivanjeGuiController ZakazivanjeGuiController { get; set; }
         public PretraziZakazivanjeGuiController PretraziZakazivanjeGuiController { get; set; }
 
         internal void OtvoriLoginFormu()
@@ -79,6 +79,7 @@ namespace Client.Session
 
         internal void OtvoriUslugaPanel(Panel panelContent)
         {
+            UslugaGuiController = new UslugaGuiController(null);
             UslugaUC uc = new UslugaUC();
             uc.Dock = DockStyle.Fill;
             panelContent.Controls.Clear();
@@ -88,31 +89,31 @@ namespace Client.Session
         internal void InicijalizujPretraziPacijentKontroler(PacijentUC uc)
         {
             PretraziPacijentGuiController = new PretraziPacijentGuiController(uc);
-            KreirajPacijentGuiController = new KreirajPacijentGuiController(null);
+            PacijentGuiController = new PacijentGuiController(null);
         }
 
         internal void OtvoriKreirajPacijentFormu()
         {
             FrmPacijent = new FrmPacijent(ModeForme.Kreiraj);
-            KreirajPacijentGuiController = new KreirajPacijentGuiController(FrmPacijent);
+            PacijentGuiController = new PacijentGuiController(FrmPacijent);
         }
 
         internal void OtvoriPromeniPacijentFormu()
         {
             FrmPacijent = new FrmPacijent(ModeForme.Promeni);
-            KreirajPacijentGuiController = new KreirajPacijentGuiController(FrmPacijent);
+            PacijentGuiController = new PacijentGuiController(FrmPacijent);
         }
 
         internal void OtvoriUbaciUslugaFormu()
         {
             FrmUsluga = new FrmUsluga(ModeForme.Kreiraj);
-            UbaciUslugaGuiController = new UbaciUslugaGuiController(FrmUsluga);
+            UslugaGuiController = new UslugaGuiController(FrmUsluga);
         }
 
         internal void OtvoriPromeniUslugaFormu()
         {
             FrmUsluga = new FrmUsluga(ModeForme.Promeni);
-            UbaciUslugaGuiController = new UbaciUslugaGuiController(FrmUsluga);
+            UslugaGuiController = new UslugaGuiController(FrmUsluga);
         }
 
         internal void OtvoriZakazivanjePanel(Panel panelContent)
@@ -138,19 +139,19 @@ namespace Client.Session
         internal void InicijalizujPretraziZakazivanjeKontroler(ZakazivanjeUC uc)
         {
             PretraziZakazivanjeGuiController = new PretraziZakazivanjeGuiController(uc);
-            KreirajZakazivanjeGuiController = new KreirajZakazivanjeGuiController(null);
+            ZakazivanjeGuiController = new ZakazivanjeGuiController(null);
         }
 
         internal void OtvoriKreirajZakazivanjeFormu()
         {
             FrmZakazivanje = new FrmZakazivanje(ModeForme.Kreiraj);
-            KreirajZakazivanjeGuiController = new KreirajZakazivanjeGuiController(FrmZakazivanje);
+            ZakazivanjeGuiController = new ZakazivanjeGuiController(FrmZakazivanje);
         }
 
         internal void OtvoriPromeniZakazivanjeFormu()
         {
             FrmZakazivanje = new FrmZakazivanje(ModeForme.Promeni);
-            KreirajZakazivanjeGuiController = new KreirajZakazivanjeGuiController(FrmZakazivanje);
+            ZakazivanjeGuiController = new ZakazivanjeGuiController(FrmZakazivanje);
         }
     }
 }

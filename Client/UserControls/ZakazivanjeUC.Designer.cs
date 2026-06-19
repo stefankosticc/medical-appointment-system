@@ -298,7 +298,7 @@ namespace Client.UserControls
             lblCardTitle.Name = "lblCardTitle";
             lblCardTitle.Size = new Size(300, 54);
             lblCardTitle.TabIndex = 0;
-            lblCardTitle.Text = "Sve rezervacije";
+            lblCardTitle.Text = "Sva zakazivanja";
             lblCardTitle.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // pnlButtons
@@ -349,10 +349,10 @@ namespace Client.UserControls
             // 
             btnObrisi.BackColor = Color.FromArgb(242, 242, 242);
             btnObrisi.Cursor = Cursors.Hand;
-            btnObrisi.FlatAppearance.BorderColor = Color.FromArgb(50, 50, 50);
+            btnObrisi.FlatAppearance.BorderColor = Color.FromArgb(214, 34, 70);
             btnObrisi.FlatStyle = FlatStyle.Flat;
             btnObrisi.Font = new Font("Segoe UI", 9.5F);
-            btnObrisi.ForeColor = Color.FromArgb(30, 30, 30);
+            btnObrisi.ForeColor = Color.FromArgb(214, 34, 70);
             btnObrisi.Location = new Point(320, 14);
             btnObrisi.Name = "btnObrisi";
             btnObrisi.Size = new Size(120, 34);

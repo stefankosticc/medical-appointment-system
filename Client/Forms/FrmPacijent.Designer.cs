@@ -30,7 +30,6 @@ namespace Client.Forms
             lblKategorija = new Label();
             cmbKategorijaPacijenta = new ComboBox();
             btnSacuvaj = new Button();
-            btnIzmeni = new Button();
             btnOdustani = new Button();
             SuspendLayout();
 
@@ -62,7 +61,8 @@ namespace Client.Forms
             // dtpDatumRodjenja
             dtpDatumRodjenja.Location = new Point(160, 108);
             dtpDatumRodjenja.Size = new Size(280, 27);
-            dtpDatumRodjenja.Format = DateTimePickerFormat.Short;
+            dtpDatumRodjenja.CustomFormat = "dd.MM.yyyy";
+            dtpDatumRodjenja.Format = DateTimePickerFormat.Custom;
             dtpDatumRodjenja.Name = "dtpDatumRodjenja";
 
             // lblPol
@@ -114,13 +114,6 @@ namespace Client.Forms
             btnSacuvaj.Name = "btnSacuvaj";
             btnSacuvaj.Click += new EventHandler(btnSacuvaj_Click);
 
-            // btnIzmeni
-            btnIzmeni.Text = "Izmeni";
-            btnIzmeni.Location = new Point(160, 335);
-            btnIzmeni.Size = new Size(120, 35);
-            btnIzmeni.Name = "btnIzmeni";
-            btnIzmeni.Click += new EventHandler(btnIzmeni_Click);
-
             // btnOdustani
             btnOdustani.Text = "Odustani";
             btnOdustani.Location = new Point(290, 335);
@@ -148,7 +141,6 @@ namespace Client.Forms
             Controls.Add(lblKategorija);
             Controls.Add(cmbKategorijaPacijenta);
             Controls.Add(btnSacuvaj);
-            Controls.Add(btnIzmeni);
             Controls.Add(btnOdustani);
             FormClosing += FrmPacijent_FormClosing;
             ResumeLayout(false);
@@ -172,7 +164,6 @@ namespace Client.Forms
         private Label lblKategorija;
         public ComboBox cmbKategorijaPacijenta;
         public Button btnSacuvaj;
-        public Button btnIzmeni;
         public Button btnOdustani;
     }
 }

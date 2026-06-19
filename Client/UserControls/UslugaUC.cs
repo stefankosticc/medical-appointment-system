@@ -1,5 +1,4 @@
 using Client.Session;
-using Common.Communication;
 using Common.Domain;
 
 namespace Client.UserControls
@@ -96,10 +95,7 @@ namespace Client.UserControls
 
         private void PopuniGrid()
         {
-            Response response = Communication.Instance.VratiListuSviUsluga(new Usluga());
-            if (response.ExceptionMessage == null)
-                Koordinator.Instance.ListaUsluga = response.Data as List<Usluga>;
-
+            Koordinator.Instance.UslugaGuiController.PopuniGrid();
             dgvUsluge.DataSource = null;
             dgvUsluge.DataSource = Koordinator.Instance.ListaUsluga;
             dgvUsluge.ClearSelection();
@@ -132,7 +128,7 @@ namespace Client.UserControls
         private void btnUbaci_Click(object sender, EventArgs e)
         {
             Koordinator.Instance.OtvoriUbaciUslugaFormu();
-            Koordinator.Instance.UbaciUslugaGuiController.UbaciUslugu();
+            Koordinator.Instance.UslugaGuiController.UbaciUslugu();
             PopuniGrid();
         }
 
@@ -146,7 +142,7 @@ namespace Client.UserControls
 
             Koordinator.Instance.IzabranaUsluga = dgvUsluge.SelectedRows[0].DataBoundItem as Usluga;
             Koordinator.Instance.OtvoriPromeniUslugaFormu();
-            Koordinator.Instance.UbaciUslugaGuiController.PromeniUslugu();
+            Koordinator.Instance.UslugaGuiController.PromeniUslugu();
             PopuniGrid();
         }
 

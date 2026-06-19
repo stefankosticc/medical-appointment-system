@@ -1,5 +1,4 @@
 using Client.Session;
-using Common.Communication;
 using Common.Domain;
 
 namespace Client.UserControls
@@ -11,8 +10,8 @@ namespace Client.UserControls
             InitializeComponent();
             FormatirajGrid();
             PopuniKomboKategorija();
-            PopuniGrid();
             Koordinator.Instance.InicijalizujPretraziPacijentKontroler(this);
+            PopuniGrid();
         }
 
         private void PopuniKomboKategorija()
@@ -27,13 +26,7 @@ namespace Client.UserControls
 
         private void PopuniGrid()
         {
-            Response response = Communication.Instance.VratiListuSviPacijent(new Pacijent());
-            if (response.ExceptionMessage == null)
-                Koordinator.Instance.ListaPacijenata = response.Data as List<Pacijent>;
-
-            dgvPacijenti.DataSource = null;
-            dgvPacijenti.DataSource = Koordinator.Instance.ListaPacijenata;
-            dgvPacijenti.ClearSelection();
+            Koordinator.Instance.PretraziPacijentGuiController.PopuniGrid();
             lblStatus.Text = "Nijedan nije izabran";
         }
 
@@ -176,7 +169,7 @@ namespace Client.UserControls
         private void btnKreiraj_Click(object sender, EventArgs e)
         {
             Koordinator.Instance.OtvoriKreirajPacijentFormu();
-            Koordinator.Instance.KreirajPacijentGuiController.KreirajPacijenta();
+            Koordinator.Instance.PacijentGuiController.KreirajPacijenta();
             PopuniGrid();
         }
 
@@ -184,14 +177,14 @@ namespace Client.UserControls
         {
             if (!Koordinator.Instance.PretraziPacijentGuiController.NadjiPacijenta()) return;
             Koordinator.Instance.OtvoriPromeniPacijentFormu();
-            Koordinator.Instance.KreirajPacijentGuiController.PromeniPacijenta();
+            Koordinator.Instance.PacijentGuiController.PromeniPacijenta();
             PopuniGrid();
         }
 
         private void btnObrisi_Click(object sender, EventArgs e)
         {
             if (!Koordinator.Instance.PretraziPacijentGuiController.NadjiPacijenta()) return;
-            Koordinator.Instance.KreirajPacijentGuiController.ObrisiPacijenta();
+            Koordinator.Instance.PacijentGuiController.ObrisiPacijenta();
             PopuniGrid();
         }
 

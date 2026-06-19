@@ -25,6 +25,8 @@ namespace Client.GuiController
             var uslovi = new List<string>();
             if (!string.IsNullOrEmpty(ime)) uslovi.Add($"p.ime LIKE '%{ime}%'");
             if (!string.IsNullOrEmpty(prezime)) uslovi.Add($"p.prezime LIKE '%{prezime}%'");
+            if (_uc.dtpDatumRodjenja.Checked)
+                uslovi.Add($"p.datRodjenja = '{_uc.dtpDatumRodjenja.Value:yyyy-MM-dd}'");
             if (idKategorija != -1) uslovi.Add($"p.idKategorijaPacijenta = {idKategorija}");
 
             kriterijum.WhereClause = string.Join(" AND ", uslovi);
@@ -71,6 +73,14 @@ namespace Client.GuiController
             Koordinator.Instance.IzabraniPacijent = (response.Data as List<Pacijent>)[0];
             MessageBox.Show(_uc.ParentForm, "Sistem je našao pacijenta.", "INFORMACIJA", MessageBoxButtons.OK, MessageBoxIcon.Information);
             return true;
+        }
+
+        internal void PopuniGrid()
+        {
+            Response response = Communication.Instance.VratiListuSviPacijent(new Pacijent());
+            if (response.ExceptionMessage == null)
+                Koordinator.Instance.ListaPacijenata = response.Data as List<Pacijent>;
+            AzurirajTabelu(Koordinator.Instance.ListaPacijenata);
         }
 
         private void AzurirajTabelu(List<Pacijent> lista)

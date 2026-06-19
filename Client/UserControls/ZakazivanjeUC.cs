@@ -18,9 +18,9 @@ namespace Client.UserControls
             InitializeComponent();
             FormatirajGrid();
             PopuniCmbUsluga();
-            PopuniGrid();
             lblIzabraniZaposleni.Text = Koordinator.Instance.UlogovanZaposleni?.ToString() ?? "Nije izabran";
             Koordinator.Instance.InicijalizujPretraziZakazivanjeKontroler(this);
+            PopuniGrid();
             pnlCard.PerformLayout();
         }
 
@@ -206,7 +206,7 @@ namespace Client.UserControls
         private void btnKreiraj_Click(object sender, EventArgs e)
         {
             Koordinator.Instance.OtvoriKreirajZakazivanjeFormu();
-            Koordinator.Instance.KreirajZakazivanjeGuiController.KreirajZakazivanje();
+            Koordinator.Instance.ZakazivanjeGuiController.KreirajZakazivanje();
             PopuniGrid();
         }
 
@@ -214,13 +214,13 @@ namespace Client.UserControls
         {
             if (!Koordinator.Instance.PretraziZakazivanjeGuiController.NadjiZakazivanje()) return;
             Koordinator.Instance.OtvoriPromeniZakazivanjeFormu();
-            Koordinator.Instance.KreirajZakazivanjeGuiController.UcitajZakazivanje();
+            Koordinator.Instance.ZakazivanjeGuiController.UcitajZakazivanje();
             PopuniGrid();
         }
 
         private void btnObrisi_Click(object sender, EventArgs e)
         {
-            Koordinator.Instance.KreirajZakazivanjeGuiController.ObrisiZakazivanje();
+            Koordinator.Instance.ZakazivanjeGuiController.ObrisiZakazivanje();
             PopuniGrid();
         }
     }

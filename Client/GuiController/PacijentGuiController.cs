@@ -7,11 +7,11 @@ using System.Diagnostics;
 
 namespace Client.GuiController
 {
-    public class KreirajPacijentGuiController
+    public class PacijentGuiController
     {
         private FrmPacijent _frm;
 
-        public KreirajPacijentGuiController(FrmPacijent frm)
+        public PacijentGuiController(FrmPacijent frm)
         {
             _frm = frm;
         }

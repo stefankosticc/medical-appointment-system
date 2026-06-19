@@ -24,13 +24,11 @@ namespace Client.Forms
 
             if (mode == ModeForme.Kreiraj)
             {
-                btnSacuvaj.Visible = true;
-                btnIzmeni.Visible = false;
+                btnSacuvaj.Text = "Sačuvaj";
             }
             else if (mode == ModeForme.Promeni)
             {
-                btnSacuvaj.Visible = false;
-                btnIzmeni.Visible = true;
+                btnSacuvaj.Text = "Izmeni";
                 btnIzaberiPacijent.Enabled = false;
                 btnIzaberiPacijent.Visible = false;
             }
@@ -61,7 +59,13 @@ namespace Client.Forms
                 DisplayMember = "Naziv",
                 ValueMember = "Id",
                 Width = 260,
-                SortMode = DataGridViewColumnSortMode.NotSortable
+                FlatStyle = FlatStyle.Flat,
+                SortMode = DataGridViewColumnSortMode.NotSortable,
+                DefaultCellStyle = new DataGridViewCellStyle
+                {
+                    SelectionBackColor = Color.FromArgb(253, 237, 241),
+                    SelectionForeColor = Color.FromArgb(20, 20, 20)
+                }
             };
 
             colCenaStavka = new DataGridViewTextBoxColumn
@@ -161,25 +165,6 @@ namespace Client.Forms
             }
         }
 
-        public List<StavkaZakazivanja> GetStavke()
-        {
-            var stavke = new List<StavkaZakazivanja>();
-            int rb = 1;
-            foreach (DataGridViewRow row in dgvStavke.Rows)
-            {
-                if (row.Cells[colUslugaStavka.Index].Value == null) continue;
-                long uslugaId = Convert.ToInt64(row.Cells[colUslugaStavka.Index].Value);
-                Usluga u = Koordinator.Instance.ListaUsluga.FirstOrDefault(x => x.Id == uslugaId);
-                if (u == null) continue;
-                decimal cena = row.Cells[colCenaStavka.Index].Value != null
-                    ? Convert.ToDecimal(row.Cells[colCenaStavka.Index].Value) : 0;
-                string napomena = row.Cells[colNapomenaStavka.Index].Value?.ToString() ?? "";
-
-                stavke.Add(new StavkaZakazivanja { Rb = rb++, Usluga = u, Cena = cena, Napomena = napomena });
-            }
-            return stavke;
-        }
-
         private void AzurirajIznose()
         {
             decimal ukupanIznos = 0;
@@ -232,14 +217,7 @@ namespace Client.Forms
         private void btnSacuvaj_Click(object sender, EventArgs e)
         {
             _btnKliknuto = true;
-            Koordinator.Instance.KreirajZakazivanjeGuiController.PromeniZakazivanje();
-            _btnKliknuto = false;
-        }
-
-        private void btnIzmeni_Click(object sender, EventArgs e)
-        {
-            _btnKliknuto = true;
-            Koordinator.Instance.KreirajZakazivanjeGuiController.PromeniZakazivanje();
+            Koordinator.Instance.ZakazivanjeGuiController.PromeniZakazivanje();
             _btnKliknuto = false;
         }
 
@@ -247,9 +225,9 @@ namespace Client.Forms
         {
             _btnKliknuto = true;
             if (_mode == ModeForme.Kreiraj)
-                Koordinator.Instance.KreirajZakazivanjeGuiController.OdustaniKreiraj();
+                Koordinator.Instance.ZakazivanjeGuiController.OdustaniKreiraj();
             else
-                Koordinator.Instance.KreirajZakazivanjeGuiController.OdustaniPromeni();
+                Koordinator.Instance.ZakazivanjeGuiController.OdustaniPromeni();
         }
 
         private void FrmZakazivanje_FormClosing(object sender, FormClosingEventArgs e)
@@ -257,9 +235,9 @@ namespace Client.Forms
             if (_btnKliknuto || e.CloseReason != CloseReason.UserClosing) return;
             _btnKliknuto = true;
             if (_mode == ModeForme.Kreiraj)
-                Koordinator.Instance.KreirajZakazivanjeGuiController.OdustaniKreiraj();
+                Koordinator.Instance.ZakazivanjeGuiController.OdustaniKreiraj();
             else
-                Koordinator.Instance.KreirajZakazivanjeGuiController.OdustaniPromeni();
+                Koordinator.Instance.ZakazivanjeGuiController.OdustaniPromeni();
         }
     }
 }

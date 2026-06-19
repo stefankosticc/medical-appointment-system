@@ -30,6 +30,7 @@ namespace Client.UserControls
             txtIme = new TextBox();
             txtPrezime = new TextBox();
             cmbKategorija = new ComboBox();
+            dtpDatumRodjenja = new DateTimePicker();
             btnPretrazi = new Button();
             pnlCardHeader = new Panel();
             lblCardTitle = new Label();
@@ -187,6 +188,7 @@ namespace Client.UserControls
             pnlCardFilter.BackColor = Color.White;
             pnlCardFilter.Controls.Add(txtIme);
             pnlCardFilter.Controls.Add(txtPrezime);
+            pnlCardFilter.Controls.Add(dtpDatumRodjenja);
             pnlCardFilter.Controls.Add(cmbKategorija);
             pnlCardFilter.Controls.Add(btnPretrazi);
             pnlCardFilter.Dock = DockStyle.Top;
@@ -223,23 +225,35 @@ namespace Client.UserControls
             cmbKategorija.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbKategorija.FlatStyle = FlatStyle.Flat;
             cmbKategorija.Font = new Font("Segoe UI", 9.5F);
-            cmbKategorija.Location = new Point(272, 13);
+            cmbKategorija.Location = new Point(430, 13);
             cmbKategorija.Name = "cmbKategorija";
             cmbKategorija.Size = new Size(150, 25);
-            cmbKategorija.TabIndex = 2;
-            // 
+            cmbKategorija.TabIndex = 3;
+            //
+            // dtpDatumRodjenja
+            //
+            dtpDatumRodjenja.CustomFormat = "dd.MM.yyyy";
+            dtpDatumRodjenja.Format = DateTimePickerFormat.Custom;
+            dtpDatumRodjenja.Font = new Font("Segoe UI", 9.5F);
+            dtpDatumRodjenja.Location = new Point(272, 13);
+            dtpDatumRodjenja.Name = "dtpDatumRodjenja";
+            dtpDatumRodjenja.ShowCheckBox = true;
+            dtpDatumRodjenja.Checked = false;
+            dtpDatumRodjenja.Size = new Size(150, 24);
+            dtpDatumRodjenja.TabIndex = 2;
+            //
             // btnPretrazi
-            // 
+            //
             btnPretrazi.BackColor = Color.FromArgb(36, 36, 36);
             btnPretrazi.Cursor = Cursors.Hand;
             btnPretrazi.FlatAppearance.BorderSize = 0;
             btnPretrazi.FlatStyle = FlatStyle.Flat;
             btnPretrazi.Font = new Font("Segoe UI", 9F);
             btnPretrazi.ForeColor = Color.White;
-            btnPretrazi.Location = new Point(430, 13);
+            btnPretrazi.Location = new Point(588, 13);
             btnPretrazi.Name = "btnPretrazi";
             btnPretrazi.Size = new Size(90, 26);
-            btnPretrazi.TabIndex = 3;
+            btnPretrazi.TabIndex = 4;
             btnPretrazi.Text = "Pretraži";
             btnPretrazi.UseVisualStyleBackColor = false;
             btnPretrazi.Click += btnPretrazi_Click;
@@ -363,6 +377,7 @@ namespace Client.UserControls
         public TextBox txtPrezime;
         private Label lblKategorija;
         public ComboBox cmbKategorija;
+        public DateTimePicker dtpDatumRodjenja;
         public Button btnPretrazi;
         private Panel pnlCardHeaderDiv;
         private Panel pnlCardFooterDiv;

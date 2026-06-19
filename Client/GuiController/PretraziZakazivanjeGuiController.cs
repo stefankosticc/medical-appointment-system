@@ -67,6 +67,16 @@ namespace Client.GuiController
             return true;
         }
 
+        internal void PopuniGrid()
+        {
+            var kriterijum = new Zakazivanje();
+            kriterijum.WhereClause = $"z.idZaposleni = {Koordinator.Instance.UlogovanZaposleni.Id}";
+            Response response = Communication.Instance.VratiListuZakazivanje(kriterijum);
+            if (response.ExceptionMessage == null)
+                Koordinator.Instance.ListaZakazivanja = response.Data as List<Zakazivanje>;
+            AzurirajTabelu(Koordinator.Instance.ListaZakazivanja);
+        }
+
         internal void AzurirajTabelu(List<Zakazivanje> lista)
         {
             _uc.dgvZakazivanja.DataSource = null;

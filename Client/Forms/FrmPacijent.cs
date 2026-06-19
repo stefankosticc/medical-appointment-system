@@ -21,15 +21,11 @@ namespace Client.Forms
 
             if (mode == ModeForme.Kreiraj)
             {
-                btnSacuvaj.Visible = true;
-                btnIzmeni.Visible = false;
-                btnOdustani.Text = "Odustani";
+                btnSacuvaj.Text = "Sačuvaj";
             }
             else if (mode == ModeForme.Promeni)
             {
-                btnSacuvaj.Visible = false;
-                btnIzmeni.Visible = true;
-                btnOdustani.Text = "Odustani";
+                btnSacuvaj.Text = "Izmeni";
                 dtpDatumRodjenja.Enabled = false;
                 cmbPol.Enabled = false;
             }
@@ -38,14 +34,7 @@ namespace Client.Forms
         private void btnSacuvaj_Click(object sender, EventArgs e)
         {
             _btnKliknuto = true;
-            Koordinator.Instance.KreirajPacijentGuiController.SacuvajPacijenta();
-            _btnKliknuto = false;
-        }
-
-        private void btnIzmeni_Click(object sender, EventArgs e)
-        {
-            _btnKliknuto = true;
-            Koordinator.Instance.KreirajPacijentGuiController.SacuvajPacijenta();
+            Koordinator.Instance.PacijentGuiController.SacuvajPacijenta();
             _btnKliknuto = false;
         }
 
@@ -53,9 +42,9 @@ namespace Client.Forms
         {
             _btnKliknuto = true;
             if (_mode == ModeForme.Kreiraj)
-                Koordinator.Instance.KreirajPacijentGuiController.OdustaniKreiraj();
+                Koordinator.Instance.PacijentGuiController.OdustaniKreiraj();
             else
-                Koordinator.Instance.KreirajPacijentGuiController.OdustaniPromeni();
+                Koordinator.Instance.PacijentGuiController.OdustaniPromeni();
         }
 
         private void FrmPacijent_FormClosing(object sender, FormClosingEventArgs e)
@@ -64,9 +53,9 @@ namespace Client.Forms
 
             _btnKliknuto = true;
             if (_mode == ModeForme.Kreiraj)
-                Koordinator.Instance.KreirajPacijentGuiController.OdustaniKreiraj();
+                Koordinator.Instance.PacijentGuiController.OdustaniKreiraj();
             else
-                Koordinator.Instance.KreirajPacijentGuiController.OdustaniPromeni();
+                Koordinator.Instance.PacijentGuiController.OdustaniPromeni();
         }
     }
 }

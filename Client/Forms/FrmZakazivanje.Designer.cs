@@ -31,7 +31,6 @@ namespace Client.Forms
             lblUkupanIznos = new Label();
             lblIznosSaPopustom = new Label();
             btnSacuvaj = new Button();
-            btnIzmeni = new Button();
             btnOdustani = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvStavke).BeginInit();
             SuspendLayout();
@@ -187,15 +186,7 @@ namespace Client.Forms
             btnSacuvaj.Text = "Sačuvaj";
             btnSacuvaj.Click += btnSacuvaj_Click;
             // 
-            // btnIzmeni
-            // 
-            btnIzmeni.Location = new Point(400, 440);
-            btnIzmeni.Name = "btnIzmeni";
-            btnIzmeni.Size = new Size(90, 32);
-            btnIzmeni.TabIndex = 17;
-            btnIzmeni.Text = "Izmeni";
-            btnIzmeni.Click += btnIzmeni_Click;
-            // 
+            //
             // btnOdustani
             // 
             btnOdustani.Location = new Point(498, 440);
@@ -224,7 +215,6 @@ namespace Client.Forms
             Controls.Add(lblUkupanIznos);
             Controls.Add(lblIznosSaPopustom);
             Controls.Add(btnSacuvaj);
-            Controls.Add(btnIzmeni);
             Controls.Add(btnOdustani);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
@@ -259,7 +249,6 @@ namespace Client.Forms
         private Label lblUkupanIznos;
         private Label lblIznosSaPopustom;
         private Button btnSacuvaj;
-        private Button btnIzmeni;
         private Button btnOdustani;
     }
 }

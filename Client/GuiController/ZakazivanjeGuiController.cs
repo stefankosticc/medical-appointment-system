@@ -6,11 +6,11 @@ using System.Diagnostics;
 
 namespace Client.GuiController
 {
-    public class KreirajZakazivanjeGuiController
+    public class ZakazivanjeGuiController
     {
         private FrmZakazivanje _frm;
 
-        public KreirajZakazivanjeGuiController(FrmZakazivanje frm)
+        public ZakazivanjeGuiController(FrmZakazivanje frm)
         {
             _frm = frm;
         }
@@ -37,6 +37,24 @@ namespace Client.GuiController
             _frm.ShowDialog();
         }
 
+        private List<StavkaZakazivanja> GetStavke()
+        {
+            var stavke = new List<StavkaZakazivanja>();
+            int rb = 1;
+            foreach (DataGridViewRow row in _frm.dgvStavke.Rows)
+            {
+                if (row.Cells["colUslugaStavka"].Value == null) continue;
+                long uslugaId = Convert.ToInt64(row.Cells["colUslugaStavka"].Value);
+                Usluga u = Koordinator.Instance.ListaUsluga.FirstOrDefault(x => x.Id == uslugaId);
+                if (u == null) continue;
+                decimal cena = row.Cells["colCenaStavka"].Value != null
+                    ? Convert.ToDecimal(row.Cells["colCenaStavka"].Value) : 0;
+                string napomena = row.Cells["colNapomenaStavka"].Value?.ToString() ?? "";
+                stavke.Add(new StavkaZakazivanja { Rb = rb++, Usluga = u, Cena = cena, Napomena = napomena });
+            }
+            return stavke;
+        }
+
         internal void PromeniZakazivanje()
         {
             if (!Validacija()) return;
@@ -49,7 +67,7 @@ namespace Client.GuiController
                     DatumIVremeZakazivanja = _frm.dtpDatumIVremeZakazivanja.Value,
                     Zaposleni = _frm.IzabraniZaposleni,
                     Pacijent = _frm.IzabraniPacijent,
-                    StavkeZakazivanja = _frm.GetStavke()
+                    StavkeZakazivanja = GetStavke()
                 };
 
                 Response response = Communication.Instance.PromeniZakazivanje(zakazivanje);
@@ -125,7 +143,7 @@ namespace Client.GuiController
                 return false;
             }
 
-            if (_frm.GetStavke().Count == 0)
+            if (GetStavke().Count == 0)
             {
                 MessageBox.Show(_frm, "Dodajte bar jednu stavku!", "GREŠKA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;

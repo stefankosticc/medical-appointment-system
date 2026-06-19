@@ -6,13 +6,20 @@ using System.Diagnostics;
 
 namespace Client.GuiController
 {
-    internal class UbaciUslugaGuiController
+    internal class UslugaGuiController
     {
         private FrmUsluga _frm;
 
-        public UbaciUslugaGuiController(FrmUsluga frm)
+        public UslugaGuiController(FrmUsluga frm)
         {
             _frm = frm;
+        }
+
+        internal void PopuniGrid()
+        {
+            Response response = Communication.Instance.VratiListuSviUsluga(new Usluga());
+            if (response.ExceptionMessage == null)
+                Koordinator.Instance.ListaUsluga = response.Data as List<Usluga>;
         }
 
         internal void UbaciUslugu()

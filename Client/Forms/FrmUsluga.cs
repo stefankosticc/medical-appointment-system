@@ -34,17 +34,17 @@ namespace Client.Forms
 
         private void btnSacuvaj_Click(object sender, EventArgs e)
         {
-            Koordinator.Instance.UbaciUslugaGuiController.SacuvajUslugu();
+            Koordinator.Instance.UslugaGuiController.SacuvajUslugu();
         }
 
         private void btnIzmeni_Click(object sender, EventArgs e)
         {
-            Koordinator.Instance.UbaciUslugaGuiController.IzmeniUslugu();
+            Koordinator.Instance.UslugaGuiController.IzmeniUslugu();
         }
 
         private void btnOdustani_Click(object sender, EventArgs e)
         {
-            Koordinator.Instance.UbaciUslugaGuiController.Odustani();
+            Koordinator.Instance.UslugaGuiController.Odustani();
         }
     }
 }
