@@ -219,6 +219,7 @@ namespace Client.Forms
             btnOdeljenja.Text = "Odeljenja";
             btnOdeljenja.TextAlign = ContentAlignment.MiddleLeft;
             btnOdeljenja.UseVisualStyleBackColor = false;
+            btnOdeljenja.Click += btnOdeljenja_Click;
             // 
             // pnlUserFooter
             // 

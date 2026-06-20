@@ -23,10 +23,14 @@ namespace Client.GuiController
             long idKategorija = _uc.cmbKategorija.SelectedValue is long id ? id : -1;
 
             var uslovi = new List<string>();
+
             if (!string.IsNullOrEmpty(ime)) uslovi.Add($"p.ime LIKE '%{ime}%'");
+
             if (!string.IsNullOrEmpty(prezime)) uslovi.Add($"p.prezime LIKE '%{prezime}%'");
+
             if (_uc.dtpDatumRodjenja.Checked)
                 uslovi.Add($"p.datRodjenja = '{_uc.dtpDatumRodjenja.Value:yyyy-MM-dd}'");
+
             if (idKategorija != -1) uslovi.Add($"p.idKategorijaPacijenta = {idKategorija}");
 
             kriterijum.WhereClause = string.Join(" AND ", uslovi);
@@ -34,8 +38,10 @@ namespace Client.GuiController
             if (string.IsNullOrEmpty(kriterijum.WhereClause))
             {
                 Response sviResponse = Communication.Instance.VratiListuSviPacijent(new Pacijent());
+
                 if (sviResponse.ExceptionMessage == null)
                     Koordinator.Instance.ListaPacijenata = sviResponse.Data as List<Pacijent>;
+
                 AzurirajTabelu(Koordinator.Instance.ListaPacijenata);
                 return;
             }

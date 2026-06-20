@@ -31,11 +31,13 @@ namespace Client.Session
         public List<Usluga> ListaUsluga { get; set; }
         public List<Zaposleni> ListaZaposlenih { get; set; }
         public List<Zakazivanje> ListaZakazivanja { get; set; }
+        public List<Odeljenje> ListaOdeljenja { get; set; }
 
         // Selektovani objekti
         public Pacijent IzabraniPacijent { get; set; }
         public Usluga IzabranaUsluga { get; set; }
         public Zakazivanje IzabranoZakazivanje { get; set; }
+        public Odeljenje IzabranoOdeljenje { get; set; }
 
         // Forme
         public FrmLogin FrmLogin { get; set; }
@@ -43,6 +45,7 @@ namespace Client.Session
         public FrmPacijent FrmPacijent { get; set; }
         public FrmUsluga FrmUsluga { get; set; }
         public FrmZakazivanje FrmZakazivanje { get; set; }
+        public FrmOdeljenje FrmOdeljenje { get; set; }
 
         // Kontroleri
         public LoginGuiController LoginGuiController { get; set; }
@@ -51,6 +54,7 @@ namespace Client.Session
         public UslugaGuiController UslugaGuiController { get; set; }
         public ZakazivanjeGuiController ZakazivanjeGuiController { get; set; }
         public PretraziZakazivanjeGuiController PretraziZakazivanjeGuiController { get; set; }
+        public OdeljenjeGuiController OdeljenjeGuiController { get; set; }
 
         internal void OtvoriLoginFormu()
         {
@@ -104,7 +108,7 @@ namespace Client.Session
             PacijentGuiController = new PacijentGuiController(FrmPacijent);
         }
 
-        internal void OtvoriUbaciUslugaFormu()
+        internal void OtvoriKreirajUslugaFormu()
         {
             FrmUsluga = new FrmUsluga(ModeForme.Kreiraj);
             UslugaGuiController = new UslugaGuiController(FrmUsluga);
@@ -152,6 +156,27 @@ namespace Client.Session
         {
             FrmZakazivanje = new FrmZakazivanje(ModeForme.Promeni);
             ZakazivanjeGuiController = new ZakazivanjeGuiController(FrmZakazivanje);
+        }
+
+        internal void OtvoriOdeljenjePanel(Panel panelContent)
+        {
+            OdeljenjeGuiController = new OdeljenjeGuiController(null);
+            OdeljenjeUC uc = new OdeljenjeUC();
+            uc.Dock = DockStyle.Fill;
+            panelContent.Controls.Clear();
+            panelContent.Controls.Add(uc);
+        }
+
+        internal void OtvoriUbaciOdeljenjeFormu()
+        {
+            FrmOdeljenje = new FrmOdeljenje(ModeForme.Kreiraj);
+            OdeljenjeGuiController = new OdeljenjeGuiController(FrmOdeljenje);
+        }
+
+        internal void OtvoriPromeniOdeljenjeFormu()
+        {
+            FrmOdeljenje = new FrmOdeljenje(ModeForme.Promeni);
+            OdeljenjeGuiController = new OdeljenjeGuiController(FrmOdeljenje);
         }
     }
 }

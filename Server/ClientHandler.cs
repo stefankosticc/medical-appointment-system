@@ -88,8 +88,8 @@ namespace Server
                     case Operation.VratiListuSviUsluga:
                         response.Data = Controller.Instance.VratiListuSviUsluga(serializer.ReadType<Usluga>(request.Argument));
                         break;
-                    case Operation.UbaciUsluga:
-                        response.Data = Controller.Instance.UbaciUsluga(serializer.ReadType<Usluga>(request.Argument));
+                    case Operation.KreirajUsluga:
+                        response.Data = Controller.Instance.KreirajUsluga(serializer.ReadType<Usluga>(request.Argument));
                         break;
                     case Operation.PromeniUsluga:
                         response.Data = Controller.Instance.PromeniUsluga(serializer.ReadType<Usluga>(request.Argument));
@@ -108,6 +108,15 @@ namespace Server
                         break;
                     case Operation.ObrisiZakazivanje:
                         Controller.Instance.ObrisiZakazivanje(serializer.ReadType<Zakazivanje>(request.Argument));
+                        break;
+                    case Operation.VratiListuSviOdeljenje:
+                        response.Data = Controller.Instance.VratiListiSviOdeljenje(serializer.ReadType<Odeljenje>(request.Argument));
+                        break;
+                    case Operation.UbaciOdeljenje:
+                        response.Data = Controller.Instance.UbaciOdeljenje(serializer.ReadType<Odeljenje>(request.Argument));
+                        break;
+                    case Operation.PromeniOdeljenje:
+                        response.Data = Controller.Instance.PromeniOdeljenje(serializer.ReadType<Odeljenje>(request.Argument));
                         break;
                 }
             }

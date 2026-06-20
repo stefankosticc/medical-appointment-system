@@ -37,24 +37,6 @@ namespace Client.GuiController
             _frm.ShowDialog();
         }
 
-        private List<StavkaZakazivanja> GetStavke()
-        {
-            var stavke = new List<StavkaZakazivanja>();
-            int rb = 1;
-            foreach (DataGridViewRow row in _frm.dgvStavke.Rows)
-            {
-                if (row.Cells["colUslugaStavka"].Value == null) continue;
-                long uslugaId = Convert.ToInt64(row.Cells["colUslugaStavka"].Value);
-                Usluga u = Koordinator.Instance.ListaUsluga.FirstOrDefault(x => x.Id == uslugaId);
-                if (u == null) continue;
-                decimal cena = row.Cells["colCenaStavka"].Value != null
-                    ? Convert.ToDecimal(row.Cells["colCenaStavka"].Value) : 0;
-                string napomena = row.Cells["colNapomenaStavka"].Value?.ToString() ?? "";
-                stavke.Add(new StavkaZakazivanja { Rb = rb++, Usluga = u, Cena = cena, Napomena = napomena });
-            }
-            return stavke;
-        }
-
         internal void PromeniZakazivanje()
         {
             if (!Validacija()) return;
@@ -127,6 +109,30 @@ namespace Client.GuiController
 
             Koordinator.Instance.IzabranoZakazivanje = null;
             _frm.Close();
+        }
+
+        private List<StavkaZakazivanja> GetStavke()
+        {
+            var stavke = new List<StavkaZakazivanja>();
+            int rb = 1;
+
+            foreach (DataGridViewRow row in _frm.dgvStavke.Rows)
+            {
+                if (row.Cells["colUslugaStavka"].Value == null) continue;
+
+                long uslugaId = Convert.ToInt64(row.Cells["colUslugaStavka"].Value);
+                Usluga u = Koordinator.Instance.ListaUsluga.FirstOrDefault(x => x.Id == uslugaId);
+
+                if (u == null) continue;
+
+                decimal cena = row.Cells["colCenaStavka"].Value != null
+                    ? Convert.ToDecimal(row.Cells["colCenaStavka"].Value) : 0;
+
+                string napomena = row.Cells["colNapomenaStavka"].Value?.ToString() ?? "";
+
+                stavke.Add(new StavkaZakazivanja { Rb = rb++, Usluga = u, Cena = cena, Napomena = napomena });
+            }
+            return stavke;
         }
 
         private bool Validacija()

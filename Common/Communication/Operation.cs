@@ -21,7 +21,10 @@ namespace Common.Communication
         PretraziPacijent,
         VratiListuPacijent,
         ObrisiPacijent,
-        UbaciUsluga,
-        PromeniUsluga
+        KreirajUsluga,
+        PromeniUsluga,
+        UbaciOdeljenje,
+        PromeniOdeljenje,
+        VratiListuSviOdeljenje
     }
 }

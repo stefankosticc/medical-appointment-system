@@ -70,10 +70,13 @@ namespace Client.GuiController
         internal void PopuniGrid()
         {
             var kriterijum = new Zakazivanje();
+
             kriterijum.WhereClause = $"z.idZaposleni = {Koordinator.Instance.UlogovanZaposleni.Id}";
             Response response = Communication.Instance.VratiListuZakazivanje(kriterijum);
+
             if (response.ExceptionMessage == null)
                 Koordinator.Instance.ListaZakazivanja = response.Data as List<Zakazivanje>;
+
             AzurirajTabelu(Koordinator.Instance.ListaZakazivanja);
         }
 

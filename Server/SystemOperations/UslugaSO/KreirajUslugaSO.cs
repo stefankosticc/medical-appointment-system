@@ -2,12 +2,12 @@ using Common.Domain;
 
 namespace Server.SystemOperations.UslugaSO
 {
-    internal class UbaciUslugaSO : SystemOperationBase
+    internal class KreirajUslugaSO : SystemOperationBase
     {
         private readonly Usluga _usluga;
         public Usluga Result { get; set; }
 
-        public UbaciUslugaSO(Usluga usluga)
+        public KreirajUslugaSO(Usluga usluga)
         {
             _usluga = usluga;
         }

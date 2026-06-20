@@ -1,5 +1,6 @@
 ﻿using Common.Domain;
 using Server.SystemOperations.KategorijaPacijentaSO;
+using Server.SystemOperations.OdeljenjeSO;
 using Server.SystemOperations.PacijentSO;
 using Server.SystemOperations.UslugaSO;
 using Server.SystemOperations.ZakazivanjeSO;
@@ -94,9 +95,9 @@ namespace Server
             return so.ResultList;
         }
 
-        internal Usluga UbaciUsluga(Usluga usluga)
+        internal Usluga KreirajUsluga(Usluga usluga)
         {
-            UbaciUslugaSO so = new UbaciUslugaSO(usluga);
+            KreirajUslugaSO so = new KreirajUslugaSO(usluga);
             so.OpsteIzvrsenjeSO();
             return so.Result;
         }
@@ -140,6 +141,27 @@ namespace Server
         {
             ObrisiZakazivanjeSO so = new ObrisiZakazivanjeSO(zakazivanje);
             so.OpsteIzvrsenjeSO();
+        }
+
+        internal List<Odeljenje> VratiListiSviOdeljenje(Odeljenje odeljenje)
+        {
+            VratiListuSviOdeljenjeSO so = new VratiListuSviOdeljenjeSO(odeljenje);
+            so.OpsteIzvrsenjeSO();
+            return so.ResultList;
+        }
+
+        internal Odeljenje UbaciOdeljenje(Odeljenje odeljenje)
+        {
+            UbaciOdeljenjeSO so = new UbaciOdeljenjeSO(odeljenje);
+            so.OpsteIzvrsenjeSO();
+            return so.Result;
+        }
+
+        internal Odeljenje PromeniOdeljenje(Odeljenje odeljenje)
+        {
+            PromeniOdeljenjeSO so = new PromeniOdeljenjeSO(odeljenje);
+            so.OpsteIzvrsenjeSO();
+            return so.Result;
         }
     }
 }

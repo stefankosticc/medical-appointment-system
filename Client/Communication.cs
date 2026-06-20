@@ -166,11 +166,11 @@ namespace Client
             return response;
         }
 
-        public Response UbaciUsluga(Usluga usluga)
+        public Response KreirajUsluga(Usluga usluga)
         {
             Request request = new Request
             {
-                Operation = Operation.UbaciUsluga,
+                Operation = Operation.KreirajUsluga,
                 Argument = usluga
             };
             serializer.Send(request);
@@ -253,6 +253,45 @@ namespace Client
             };
             serializer.Send(request);
             return serializer.Receive<Response>();
+        }
+
+        public Response VratiListuSviOdeljenje(Odeljenje odeljenje)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.VratiListuSviOdeljenje,
+                Argument = odeljenje
+            };
+            serializer.Send(request);
+            Response response = serializer.Receive<Response>();
+            response.Data = serializer.ReadType<List<Odeljenje>>(response.Data);
+            return response;
+        }
+
+        public Response UbaciOdeljenje(Odeljenje odeljenje)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.UbaciOdeljenje,
+                Argument = odeljenje
+            };
+            serializer.Send(request);
+            Response response = serializer.Receive<Response>();
+            response.Data = serializer.ReadType<Odeljenje>(response.Data);
+            return response;
+        }
+
+        public Response PromeniOdeljenje(Odeljenje odeljenje)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.PromeniOdeljenje,
+                Argument = odeljenje
+            };
+            serializer.Send(request);
+            Response response = serializer.Receive<Response>();
+            response.Data = serializer.ReadType<Odeljenje>(response.Data);
+            return response;
         }
     }
 }

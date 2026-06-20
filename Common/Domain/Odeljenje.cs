@@ -1,14 +1,11 @@
-﻿using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Microsoft.Data.SqlClient;
 
 namespace Common.Domain
 {
     public class Odeljenje : IDomainObject
     {
         public long Id { get; set; }
-        public string Naziv {  get; set; }
+        public string Naziv { get; set; }
 
         public string TableName => "Odeljenje";
 
@@ -16,19 +13,32 @@ namespace Common.Domain
 
         public string InsertValues => $"'{Naziv}'";
 
-        public string SelectColumns => throw new NotImplementedException();
+        public string SelectColumns => "*";
 
-        public string JoinClause => throw new NotImplementedException();
+        public string JoinClause => "";
 
-        public string SetClause => throw new NotImplementedException();
+        public string SetClause => $"naziv='{Naziv}'";
 
-        public string PrimaryKeyClause => throw new NotImplementedException();
+        public string PrimaryKeyClause => $"id = {Id}";
 
-        public string WhereClause { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string WhereClause { get; set; }
 
         public List<IDomainObject> All(SqlDataReader reader)
         {
-            throw new NotImplementedException();
+            List<IDomainObject> odeljenja = new List<IDomainObject>();
+
+            while (reader.Read())
+            {
+                Odeljenje odeljenje = new Odeljenje
+                {
+                    Id = (long)reader["id"],
+                    Naziv = reader["naziv"].ToString().Trim()
+                };
+
+                odeljenja.Add(odeljenje);
+            }
+
+            return odeljenja;
         }
     }
 }

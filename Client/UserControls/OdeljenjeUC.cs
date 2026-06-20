@@ -3,9 +3,9 @@ using Common.Domain;
 
 namespace Client.UserControls
 {
-    public partial class UslugaUC : UserControl
+    public partial class OdeljenjeUC : UserControl
     {
-        public UslugaUC()
+        public OdeljenjeUC()
         {
             InitializeComponent();
             FormatirajGrid();
@@ -14,8 +14,8 @@ namespace Client.UserControls
 
         private void FormatirajGrid()
         {
-            dgvUsluge.AutoGenerateColumns = false;
-            dgvUsluge.ColumnHeadersDefaultCellStyle = new DataGridViewCellStyle
+            dgvOdeljenja.AutoGenerateColumns = false;
+            dgvOdeljenja.ColumnHeadersDefaultCellStyle = new DataGridViewCellStyle
             {
                 BackColor = Color.White,
                 ForeColor = Color.FromArgb(150, 150, 150),
@@ -24,7 +24,7 @@ namespace Client.UserControls
                 SelectionForeColor = Color.FromArgb(150, 150, 150),
                 Padding = new Padding(8, 0, 0, 0)
             };
-            dgvUsluge.DefaultCellStyle = new DataGridViewCellStyle
+            dgvOdeljenja.DefaultCellStyle = new DataGridViewCellStyle
             {
                 BackColor = Color.White,
                 ForeColor = Color.FromArgb(20, 20, 20),
@@ -59,7 +59,7 @@ namespace Client.UserControls
             colNaziv = new DataGridViewTextBoxColumn
             {
                 Name = "colNaziv",
-                HeaderText = "NAZIV USLUGE",
+                HeaderText = "NAZIV ODELJENJA",
                 DataPropertyName = "Naziv",
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
                 DefaultCellStyle = new DataGridViewCellStyle
@@ -69,86 +69,65 @@ namespace Client.UserControls
                 }
             };
 
-            colCena = new DataGridViewTextBoxColumn
-            {
-                Name = "colCena",
-                HeaderText = "CENA (RSD)",
-                DataPropertyName = "Cena",
-                Width = 160,
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.None,
-                DefaultCellStyle = new DataGridViewCellStyle
-                {
-                    ForeColor = Color.FromArgb(214, 34, 70),
-                    SelectionForeColor = Color.FromArgb(214, 34, 70),
-                    Font = new Font("Segoe UI", 9.5F, FontStyle.Bold),
-                    Alignment = DataGridViewContentAlignment.MiddleRight,
-                    Padding = new Padding(0, 0, 20, 0)
-                },
-                HeaderCell = { Style = new DataGridViewCellStyle
-                {
-                    Alignment = DataGridViewContentAlignment.MiddleRight
-                }}
-            };
-
-            dgvUsluge.Columns.AddRange(colRb, colNaziv, colCena);
+            dgvOdeljenja.Columns.AddRange(colRb, colNaziv);
         }
 
         private void PopuniGrid()
         {
-            Koordinator.Instance.UslugaGuiController.PopuniGrid();
-            dgvUsluge.DataSource = null;
-            dgvUsluge.DataSource = Koordinator.Instance.ListaUsluga;
-            dgvUsluge.ClearSelection();
-            lblStatus.Text = "Nijedna nije izabrana";
+            Koordinator.Instance.OdeljenjeGuiController.PopuniGrid();
+            dgvOdeljenja.DataSource = null;
+            dgvOdeljenja.DataSource = Koordinator.Instance.ListaOdeljenja;
+            dgvOdeljenja.ClearSelection();
+            lblStatus.Text = "Nijedno nije izabrano";
         }
 
-        private void dgvUsluge_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        private void dgvOdeljenja_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            if (dgvUsluge.Columns[e.ColumnIndex].Name == "colRb")
+            if (dgvOdeljenja.Columns[e.ColumnIndex].Name == "colRb")
             {
                 e.Value = (e.RowIndex + 1).ToString();
                 e.FormattingApplied = true;
             }
         }
 
-        private void dgvUsluge_SelectionChanged(object sender, EventArgs e)
+        private void dgvOdeljenja_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgvUsluge.SelectedRows.Count > 0)
+            if (dgvOdeljenja.SelectedRows.Count > 0)
             {
-                var u = dgvUsluge.SelectedRows[0].DataBoundItem as Usluga;
-                lblStatus.Text = u?.Naziv ?? "";
+                var o = dgvOdeljenja.SelectedRows[0].DataBoundItem as Odeljenje;
+                lblStatus.Text = o?.Naziv ?? "";
             }
             else
             {
-                lblStatus.Text = "Nijedna nije izabrana";
+                lblStatus.Text = "Nijedno nije izabrano";
             }
         }
 
         private void btnUbaci_Click(object sender, EventArgs e)
         {
-            Koordinator.Instance.OtvoriKreirajUslugaFormu();
-            Koordinator.Instance.UslugaGuiController.KreirajUslugu();
+            Koordinator.Instance.OtvoriUbaciOdeljenjeFormu();
+            Koordinator.Instance.OdeljenjeGuiController.UbaciOdeljenje();
             PopuniGrid();
         }
 
         private void btnPromeni_Click(object sender, EventArgs e)
         {
-            if (dgvUsluge.SelectedRows.Count == 0)
+            if (dgvOdeljenja.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Izaberite uslugu!", "GREŠKA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Izaberite odeljenje!", "GREŠKA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            Koordinator.Instance.IzabranaUsluga = dgvUsluge.SelectedRows[0].DataBoundItem as Usluga;
-            Koordinator.Instance.OtvoriPromeniUslugaFormu();
-            Koordinator.Instance.UslugaGuiController.PromeniUslugu();
+            Koordinator.Instance.IzabranoOdeljenje = dgvOdeljenja.SelectedRows[0].DataBoundItem as Odeljenje;
+            Koordinator.Instance.OtvoriPromeniOdeljenjeFormu();
+            Koordinator.Instance.OdeljenjeGuiController.PromeniOdeljenje();
             PopuniGrid();
         }
 
         private void btnObrisi_Click(object sender, EventArgs e)
         {
-            // implementirati kada dodamo ObrisiUsluga SO
+            // implementirati kada dodamo ObrisiOdeljenje SO
         }
     }
 }

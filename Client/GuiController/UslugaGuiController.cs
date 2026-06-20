@@ -22,7 +22,7 @@ namespace Client.GuiController
                 Koordinator.Instance.ListaUsluga = response.Data as List<Usluga>;
         }
 
-        internal void UbaciUslugu()
+        internal void KreirajUslugu()
         {
             _frm.ShowDialog();
         }
@@ -44,7 +44,7 @@ namespace Client.GuiController
                     Cena = _frm.nudCena.Value
                 };
 
-                Response response = Communication.Instance.UbaciUsluga(usluga);
+                Response response = Communication.Instance.KreirajUsluga(usluga);
 
                 if (response.ExceptionMessage != null || response.Data == null)
                 {
