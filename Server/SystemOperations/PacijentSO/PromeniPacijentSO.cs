@@ -15,7 +15,6 @@ namespace Server.SystemOperations.PacijentSO
         protected override void IzvrsenjeSO()
         {
             repository.Update(_pacijent);
-            Result = _pacijent;
         }
     }
 }

@@ -54,11 +54,10 @@ namespace Server
             return so.Result;
         }
 
-        internal Pacijent PromeniPacijent(Pacijent pacijent)
+        internal void PromeniPacijent(Pacijent pacijent)
         {
             PromeniPacijentSO so = new PromeniPacijentSO(pacijent);
             so.OpsteIzvrsenjeSO();
-            return so.Result;
         }
 
         internal List<Pacijent> VratiListuSviPacijent(Pacijent pacijent)
@@ -68,11 +67,11 @@ namespace Server
             return so.ResultList;
         }
 
-        internal List<Pacijent> PretraziPacijent(Pacijent kriterijum)
+        internal Pacijent PretraziPacijent(Pacijent kriterijum)
         {
             PretraziPacijentSO so = new PretraziPacijentSO(kriterijum);
             so.OpsteIzvrsenjeSO();
-            return so.ResultList;
+            return so.Result;
         }
 
         internal void ObrisiPacijent(Pacijent pacijent)

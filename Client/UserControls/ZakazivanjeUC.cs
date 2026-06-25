@@ -178,6 +178,15 @@ namespace Client.UserControls
             }
         }
 
+        private void dgvZakazivanja_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            if (!Koordinator.Instance.PretraziZakazivanjeGuiController.NadjiZakazivanje()) return;
+            Koordinator.Instance.OtvoriPromeniZakazivanjeFormu();
+            Koordinator.Instance.ZakazivanjeGuiController.UcitajZakazivanje();
+            PopuniGrid();
+        }
+
         private void btnIzaberiZaposleni_Click(object sender, EventArgs e)
         {
             using var frm = new FrmIzaberiZaposleni();
@@ -220,6 +229,7 @@ namespace Client.UserControls
 
         private void btnObrisi_Click(object sender, EventArgs e)
         {
+            if (!Koordinator.Instance.PretraziZakazivanjeGuiController.NadjiZakazivanje()) return;
             Koordinator.Instance.ZakazivanjeGuiController.ObrisiZakazivanje();
             PopuniGrid();
         }

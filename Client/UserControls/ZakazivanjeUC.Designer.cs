@@ -130,6 +130,7 @@ namespace Client.UserControls
             dgvZakazivanja.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvZakazivanja.Size = new Size(712, 334);
             dgvZakazivanja.TabIndex = 0;
+            dgvZakazivanja.CellDoubleClick += dgvZakazivanja_CellDoubleClick;
             dgvZakazivanja.CellFormatting += dgvZakazivanja_CellFormatting;
             dgvZakazivanja.SelectionChanged += dgvZakazivanja_SelectionChanged;
             // 

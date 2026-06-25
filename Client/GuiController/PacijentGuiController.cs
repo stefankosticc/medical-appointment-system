@@ -69,7 +69,6 @@ namespace Client.GuiController
                 }
 
                 MessageBox.Show(_frm, "Sistem je zapamtio pacijenta.", "USPEŠNO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Koordinator.Instance.IzabraniPacijent = response.Data as Pacijent;
                 _frm.Close();
             }
             catch (Exception ex)

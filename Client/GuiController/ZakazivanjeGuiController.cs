@@ -118,9 +118,11 @@ namespace Client.GuiController
 
             foreach (DataGridViewRow row in _frm.dgvStavke.Rows)
             {
-                if (row.Cells["colUslugaStavka"].Value == null) continue;
+                var rawValue = row.Cells["colUslugaStavka"].Value;
+                if (rawValue == null || rawValue == DBNull.Value) continue;
 
-                long uslugaId = Convert.ToInt64(row.Cells["colUslugaStavka"].Value);
+                long uslugaId = Convert.ToInt64(rawValue);
+                if (uslugaId <= 0) continue;
                 Usluga u = Koordinator.Instance.ListaUsluga.FirstOrDefault(x => x.Id == uslugaId);
 
                 if (u == null) continue;

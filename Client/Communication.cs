@@ -99,7 +99,6 @@ namespace Client
             };
             serializer.Send(request);
             Response response = serializer.Receive<Response>();
-            response.Data = serializer.ReadType<Pacijent>(response.Data);
             return response;
         }
 
@@ -125,7 +124,7 @@ namespace Client
             };
             serializer.Send(request);
             Response response = serializer.Receive<Response>();
-            response.Data = serializer.ReadType<List<Pacijent>>(response.Data);
+            response.Data = serializer.ReadType<Pacijent>(response.Data);
             return response;
         }
 

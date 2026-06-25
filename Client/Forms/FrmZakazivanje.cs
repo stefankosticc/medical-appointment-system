@@ -86,6 +86,7 @@ namespace Client.Forms
             };
 
             dgvStavke.Columns.AddRange(colRbStavka, colUslugaStavka, colCenaStavka, colNapomenaStavka);
+            dgvStavke.DataError += (s, e) => e.ThrowException = false;
         }
 
         private void PopuniIzbor()

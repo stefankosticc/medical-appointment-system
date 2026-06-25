@@ -16,7 +16,7 @@ namespace Server.SystemOperations.OdeljenjeSO
 
         protected override void IzvrsenjeSO()
         {
-            repository.InsertInto(_odeljenje);
+            _odeljenje.Id = repository.InsertIntoOutput(_odeljenje);
             Result = _odeljenje;
         }
     }

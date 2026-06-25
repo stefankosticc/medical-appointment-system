@@ -50,7 +50,7 @@ namespace Client.GuiController
 
             if (response.ExceptionMessage != null || response.Data == null || (response.Data as List<Pacijent>)?.Count == 0)
             {
-                MessageBox.Show(_uc.ParentForm, "Sistem ne može da nađe pacijente po zadatim kriterijumima.", "INFORMACIJA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(_uc.ParentForm, "Sistem ne može da nađe pacijente po zadatim kriterijumima.", "GREŠKA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -72,11 +72,11 @@ namespace Client.GuiController
 
             if (response.ExceptionMessage != null || response.Data == null || (response.Data as List<Pacijent>)?.Count == 0)
             {
-                MessageBox.Show(_uc.ParentForm, "Sistem ne može da nađe pacijenta.", "INFORMACIJA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(_uc.ParentForm, "Sistem ne može da nađe pacijenta.", "GREŠKA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
-            Koordinator.Instance.IzabraniPacijent = (response.Data as List<Pacijent>)[0];
+            Koordinator.Instance.IzabraniPacijent = response.Data as Pacijent;
             MessageBox.Show(_uc.ParentForm, "Sistem je našao pacijenta.", "INFORMACIJA", MessageBoxButtons.OK, MessageBoxIcon.Information);
             return true;
         }

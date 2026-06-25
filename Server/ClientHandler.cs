@@ -71,7 +71,7 @@ namespace Server
                         response.Data = Controller.Instance.KreirajPacijent(serializer.ReadType<Pacijent>(request.Argument));
                         break;
                     case Operation.PromeniPacijent:
-                        response.Data = Controller.Instance.PromeniPacijent(serializer.ReadType<Pacijent>(request.Argument));
+                        Controller.Instance.PromeniPacijent(serializer.ReadType<Pacijent>(request.Argument));
                         break;
                     case Operation.VratiListuSviPacijent:
                         response.Data = Controller.Instance.VratiListuSviPacijent(serializer.ReadType<Pacijent>(request.Argument));

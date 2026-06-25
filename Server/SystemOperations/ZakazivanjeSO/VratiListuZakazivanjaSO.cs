@@ -1,4 +1,5 @@
 ﻿using Common.Domain;
+using System.Diagnostics;
 
 namespace Server.SystemOperations.ZakazivanjeSO
 {
@@ -6,6 +7,7 @@ namespace Server.SystemOperations.ZakazivanjeSO
     {
         private readonly Zakazivanje _kriterijum;
         public List<Zakazivanje> ResultList { get; set; }
+        StavkaZakazivanja stavka = new StavkaZakazivanja();
 
         public VratiListuZakazivanjaSO(Zakazivanje kriterijum)
         {
@@ -16,6 +18,13 @@ namespace Server.SystemOperations.ZakazivanjeSO
         {
             List<IDomainObject> list = repository.GetAllByCondition(_kriterijum);
             ResultList = list.Cast<Zakazivanje>().ToList();
+
+            foreach (Zakazivanje zakazivanje in ResultList)
+            {
+                stavka.Zakazivanje = zakazivanje;
+                List<IDomainObject> listaStavki = repository.GetAllByCondition(stavka);
+                zakazivanje.StavkeZakazivanja = listaStavki.Cast<StavkaZakazivanja>().ToList();
+            }
         }
     }
 }
